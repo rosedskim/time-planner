@@ -20,6 +20,7 @@
   .hour { font-size:13px; fill:#8a7b66; text-anchor:middle; dominant-baseline:central; }
   .center { text-anchor:middle; fill:var(--ink); }
   #panel { flex:1 1 320px; max-width:460px; }
+  #list { display:flex; flex-direction:column; }
   .row { display:flex; gap:6px; align-items:center; padding:6px; margin-bottom:6px; border:2px solid transparent; border-radius:10px; background:#fff; }
   .row.sel { border-color:var(--ink); }
   .row input { font:inherit; min-width:0; border:1px solid var(--line); border-radius:6px; padding:4px 6px; background:#fff; color:inherit; }
@@ -129,10 +130,11 @@ function step(m, d) {
   return [...new Set(edges.map(([b]) => b))].every(b => squeeze(b));
 }
 
-// 목록의 시간 입력칸을 현재 데이터에 맞춘다 (포커스를 잃지 않도록 다시 그리지 않음)
+// 목록의 시간 입력칸과 줄 순서(CSS order)를 현재 데이터에 맞춘다 (포커스와 입력 중인 칸을 잃지 않도록 다시 그리거나 옮기지 않음)
 function syncTimes() {
   document.querySelectorAll('.row').forEach(row => {
     const b = blocks.find(b => b.id === +row.dataset.id);
+    row.style.order = blocks.filter(o => o.start < b.start).length;
     for (const f of ['start', 'end']) {
       const el = row.querySelector(`[data-f=${f}]`), v = fmt(b[f]);
       if (el.value !== v) el.value = v;
