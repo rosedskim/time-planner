@@ -95,7 +95,7 @@ const span = b => (b.end - b.start + 1440) % 1440 || 1440;
 const pt = (rad, m) => { const a = m / 1440 * 2 * Math.PI; return [C + rad * Math.sin(a), C - rad * Math.cos(a)]; };
 const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-const say = (t, ok) => { $('#msg').textContent = t; $('#msg').style.color = ok ? '#2e7d32' : ''; }; // ok=true 면 초록(안내), 아니면 빨강(오류)
+const say = t => { $('#msg').textContent = t; }; // 오류 안내(빨강은 CSS #msg)
 
 // b 가 차지한 시간과 겹치는 다른 일정의 앞/뒤를 깎아 밀어낸다.
 // 일정이 MIN 보다 좁아지거나 둘로 갈라져야 하면 false (이 경우 호출한 쪽이 되돌린다).
@@ -334,14 +334,12 @@ $('#exp').onclick = () => {
   sync(); dirty = false;
   const data = {app: 'timetable', version: 1, tables: store.tables.map(t => ({name: t.name, blocks: t.blocks.map(({id, ...b}) => b.details ? {...b, details: b.details.filter(d => d !== '')} : b)}))};
   const text = JSON.stringify(data, null, 2), name = `timetables-${new Date().toLocaleDateString('sv-SE')}.json`;
-  // 일반 다운로드. 브라우저가 조용히 다운로드 폴더에 저장하므로 안내 문구를 띄움
-  // (showSaveFilePicker 는 앱 내장 브라우저에서 곧바로 AbortError 가 나서 취소와 구분이 안 돼 쓰지 않음)
+  // 일반 다운로드 (showSaveFilePicker 는 앱 내장 브라우저에서 곧바로 AbortError 가 나서 취소와 구분이 안 돼 쓰지 않음)
   const a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob([text], {type: 'application/json'}));
   a.download = name;
   document.body.append(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-  say(`"${name}" 다운로드를 시작했어요. 브라우저의 다운로드 폴더/목록을 확인하세요.`, true);
 };
 
 const validBlock = b => b && typeof b.name === 'string' && /^#[0-9a-f]{6}$/i.test(b.color)
