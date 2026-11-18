@@ -201,8 +201,24 @@ function select(id) {
 const list = $('#list');
 const blockOf = el => blocks.find(b => b.id === +el.closest('.row').dataset.id);
 
+// 포커스를 잃은 빈 세부사항 줄을 지운다. 줄이 먼저 사라지면 아래 버튼이 밀려나 누르던 클릭이 빗나가므로,
+// 마우스를 누르고 있으면 놓고 클릭 처리가 끝난 뒤로 미룬다. 다시 그리는 도중에 오는 focusout 도 같은 이유로 미룬다.
+let pressed = false;
+function sweep() {
+  if (pressed) return;
+  list.querySelectorAll('.row').forEach(row => {
+    const empty = [...row.querySelectorAll('.d')].filter(d => { const i = d.querySelector('[data-d]'); return !i.value && i !== document.activeElement; });
+    if (!empty.length) return;
+    empty.forEach(d => d.remove());
+    row.querySelectorAll('.d').forEach((d, i) => { d.querySelector('[data-d]').dataset.d = d.querySelector('[data-deld]').dataset.deld = i; });
+    blocks.find(b => b.id === +row.dataset.id).details = [...row.querySelectorAll('[data-d]')].map(i => i.value);
+  });
+}
+document.addEventListener('pointerdown', () => pressed = true, true);
+for (const t of ['pointerup', 'pointercancel']) document.addEventListener(t, () => { pressed = false; setTimeout(sweep); }, true);
+list.addEventListener('focusout', e => { if (e.target.dataset.d !== undefined) setTimeout(sweep); });
+
 function addDetail(b) {
-  document.activeElement.blur(); // 비어 있던 줄은 여기서 먼저 사라진다 (다시 그리다가 포커스를 잃으면 인덱스가 어긋남)
   (b.details ||= []).push('');
   renderList(); save();
   document.querySelector(`.row[data-id="${b.id}"] [data-d="${b.details.length - 1}"]`).focus();
@@ -228,26 +244,11 @@ list.addEventListener('change', e => {
   say(ok ? '' : '그 시간으로는 바꿀 수 없어요 (옆 일정이 10분보다 짧아지거나 시간이 너무 짧아요)');
   syncTimes(); draw(); save();
 });
-list.addEventListener('focusout', e => {
-  if (e.target.dataset.d === undefined || e.target.value) return;
-  const box = e.target.closest('.details');
-  blockOf(e.target).details.splice(+e.target.dataset.d, 1);
-  e.target.closest('.d').remove();
-  box.querySelectorAll('.d').forEach((d, i) => { d.querySelector('[data-d]').dataset.d = d.querySelector('[data-deld]').dataset.deld = i; });
-  save();
-});
 list.addEventListener('focusout', e => { if (e.target.matches('[data-f=start],[data-f=end]') && !e.target.value) syncTimes(); });
 list.addEventListener('focusin', e => { const row = e.target.closest('.row'); if (row) select(+row.dataset.id); });
-// 빈 줄이 포커스를 잃어 사라지면 버튼이 밀려나 클릭이 빗나가므로, 버튼을 눌러도 입력칸의 포커스는 그대로 둔다
-list.addEventListener('mousedown', e => { if (e.target.matches('[data-addd],[data-deld]')) e.preventDefault(); });
 list.addEventListener('click', e => {
   if (e.target.matches('[data-addd]')) return addDetail(blockOf(e.target));
-  if (e.target.matches('[data-deld]')) {
-    const b = blockOf(e.target), line = e.target.closest('.d');
-    document.activeElement.blur();
-    if (line.isConnected) b.details.splice(+e.target.dataset.deld, 1); // 빈 줄 자신의 ×면 위 blur 로 이미 지워짐
-    renderList(); save(); return;
-  }
+  if (e.target.matches('[data-deld]')) { blockOf(e.target).details.splice(+e.target.dataset.deld, 1); renderList(); save(); return; }
   if (!e.target.matches('[data-del]')) return;
   const id = +e.target.closest('.row').dataset.id;
   blocks = blocks.filter(b => b.id !== id);
