@@ -10,6 +10,7 @@
   body { margin:0; padding:24px 16px; background:var(--bg); color:var(--ink); font:15px/1.4 -apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif; }
   h1 { margin:0 0 16px; text-align:center; font-size:22px; }
   #bar { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 auto 20px; }
+  #bar label { display:flex; align-items:center; gap:4px; }
   #bar select, #bar input { font:inherit; border:1px solid var(--line); border-radius:8px; padding:4px 8px; background:#fff; color:inherit; max-width:160px; }
   main { display:flex; flex-wrap:wrap; gap:24px; justify-content:center; align-items:flex-start; max-width:960px; margin:0 auto; }
   svg { width:min(440px,100%); height:auto; touch-action:none; flex:none; }
@@ -19,6 +20,7 @@
   .label { font-size:13px; pointer-events:none; fill:var(--ink); }
   .hour { font-size:13px; fill:#8a7b66; text-anchor:middle; dominant-baseline:central; }
   .center { text-anchor:middle; fill:var(--ink); }
+  .now { font-size:12px; font-weight:600; fill:#fff; text-anchor:middle; dominant-baseline:central; pointer-events:none; }
   #panel { flex:1 1 320px; max-width:460px; }
   #list { display:flex; flex-direction:column; }
   .row { display:flex; gap:6px; align-items:center; padding:6px; margin-bottom:6px; border:2px solid transparent; border-radius:10px; background:#fff; }
@@ -47,6 +49,7 @@
   <button id="newt">+ 새 시간표</button>
   <button id="copyt">복사</button>
   <button id="delt">삭제</button>
+  <label><input id="shownow" type="checkbox" checked>현재 시각 선</label>
   <button id="exp" title="모든 시간표를 .json 파일로 저장">⬇ 파일로 저장</button>
   <button id="imp" title="저장한 .json 파일로 시간표 목록을 바꾸기">⬆ 파일 불러오기</button>
   <input id="impfile" type="file" accept=".json,application/json" hidden>
@@ -83,6 +86,7 @@ let blocks = cur.blocks, sel = null, drag = null;
 let dirty = false; // 마지막 파일 저장 이후 바뀐 게 있는지
 
 const $ = s => document.querySelector(s);
+const showNow = $('#shownow'); // 보기 설정이라 시간표 데이터가 아니고 dirty 에도 영향이 없다
 const sync = () => { cur.blocks = blocks; }; // 일정 삭제 등으로 blocks 배열이 바뀌었을 수 있어 현재 시간표에 되돌려 둠
 const save = () => { sync(); dirty = true; };
 const fmt = m => String(m / 60 | 0).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
@@ -164,9 +168,14 @@ function draw() {
     h += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#8a7b66"/>`;
     if (i % 3 === 0) { const [x, y] = pt(R + 26, i * 60); h += `<text class="hour" x="${x}" y="${y}">${i}</text>`; }
   }
-  const now = new Date(), nm = now.getHours() * 60 + now.getMinutes();
-  const [nx1, ny1] = pt(r, nm), [nx2, ny2] = pt(R, nm);
-  h += `<line x1="${nx1}" y1="${ny1}" x2="${nx2}" y2="${ny2}" stroke="#e5484d" stroke-width="2" pointer-events="none"/>`;
+  if (showNow.checked) {
+    const now = new Date(), nm = now.getHours() * 60 + now.getMinutes();
+    // 시각이 3시간마다 있는 시 숫자(R+26)와 가까우면 시각 표시를 링 안쪽으로 옮겨 숫자를 가리지 않게 한다
+    const inside = Math.abs((nm + 90) % 180 - 90) < 40, end = inside ? R : R + 28;
+    const [nx1, ny1] = pt(r, nm), [nx2, ny2] = pt(end, nm), [px, py] = pt(inside ? R - 24 : end, nm);
+    h += `<line x1="${nx1}" y1="${ny1}" x2="${nx2}" y2="${ny2}" stroke="#e5484d" stroke-width="2" pointer-events="none"/>`
+      + `<rect x="${px - 20}" y="${py - 9}" width="40" height="18" rx="9" fill="#d6343a" pointer-events="none"/><text class="now" x="${px}" y="${py}">${fmt(nm)}</text>`;
+  }
   // 손잡이: 같은 분(minute)에 모인 경계는 하나로 보여 준다
   for (const m of new Set(blocks.flatMap(b => [b.start, b.end]))) {
     const [x, y] = pt(R, m);
@@ -372,6 +381,7 @@ $('#impfile').onchange = async e => {
   ].filter(Boolean).join(', ')}는 건너뜀)`);
 };
 
+showNow.onchange = draw;
 renderBar(); renderList(); draw();
 setInterval(draw, 60000); // 현재 시각 바늘 갱신
 </script>
