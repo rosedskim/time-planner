@@ -1,0 +1,995 @@
+{
+  "url": "file:///private/tmp/claude-501/-Users-gimdonghyeon--claude-spares-spare-qox9X3/197781c0-c678-4495-bbe6-53c3b1ff95d8/scratchpad/issue-5/nomousedown.html",
+  "scenarios": {
+    "S1 add detail, leave empty, click elsewhere": {
+      "afterAdd": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              ""
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": ""
+          }
+        ],
+        "focus": "detail#0 value=\"\"",
+        "dirty": true
+      },
+      "afterBlur": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            []
+          ]
+        ],
+        "domLines": [],
+        "focus": "BODY",
+        "dirty": true
+      },
+      "exceptions": []
+    },
+    "S2 add detail, type text, click elsewhere": {
+      "typed": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "abc"
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "abc"
+          }
+        ],
+        "focus": "detail#0 value=\"abc\"",
+        "dirty": true
+      },
+      "afterBlur": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "abc"
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "abc"
+          }
+        ],
+        "focus": "BODY",
+        "dirty": true
+      },
+      "exceptions": []
+    },
+    "S3 Enter on empty line twice, click elsewhere": {
+      "afterEnter1": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              ""
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": ""
+          }
+        ],
+        "focus": "detail#0 value=\"\"",
+        "dirty": true
+      },
+      "afterEnter2": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              ""
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": ""
+          }
+        ],
+        "focus": "detail#0 value=\"\"",
+        "dirty": true
+      },
+      "afterBlur": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            []
+          ]
+        ],
+        "domLines": [],
+        "focus": "BODY",
+        "dirty": true
+      },
+      "exceptions": []
+    },
+    "S4 empty line focused, click + 세부사항 (mouse hold 0ms)": {
+      "before": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              ""
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": ""
+          }
+        ],
+        "focus": "detail#0 value=\"\"",
+        "dirty": true
+      },
+      "afterClick": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            []
+          ]
+        ],
+        "domLines": [],
+        "focus": "addd button",
+        "dirty": true
+      },
+      "exceptions": []
+    },
+    "S4b non-empty line then empty line focused, click + 세부사항 (hold 0ms)": {
+      "before": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "a",
+              ""
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "a"
+          },
+          {
+            "d": "1",
+            "del": "1",
+            "v": ""
+          }
+        ],
+        "focus": "detail#1 value=\"\"",
+        "dirty": true
+      },
+      "afterClick": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "a"
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "a"
+          }
+        ],
+        "focus": "addd button",
+        "dirty": true
+      },
+      "exceptions": []
+    },
+    "S4 empty line focused, click + 세부사항 (mouse hold 200ms)": {
+      "before": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              ""
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": ""
+          }
+        ],
+        "focus": "detail#0 value=\"\"",
+        "dirty": true
+      },
+      "afterClick": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            []
+          ]
+        ],
+        "domLines": [],
+        "focus": "addd button",
+        "dirty": true
+      },
+      "exceptions": []
+    },
+    "S4b non-empty line then empty line focused, click + 세부사항 (hold 200ms)": {
+      "before": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "a",
+              ""
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "a"
+          },
+          {
+            "d": "1",
+            "del": "1",
+            "v": ""
+          }
+        ],
+        "focus": "detail#1 value=\"\"",
+        "dirty": true
+      },
+      "afterClick": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "a"
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "a"
+          }
+        ],
+        "focus": "addd button",
+        "dirty": true
+      },
+      "exceptions": []
+    },
+    "S5a empty middle line focused, click x on the last line (hold 200ms)": {
+      "before": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "one",
+              "",
+              "three"
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "one"
+          },
+          {
+            "d": "1",
+            "del": "1",
+            "v": ""
+          },
+          {
+            "d": "2",
+            "del": "2",
+            "v": "three"
+          }
+        ],
+        "focus": "detail#1 value=\"\"",
+        "dirty": true
+      },
+      "afterClick": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "one",
+              "three"
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "one"
+          },
+          {
+            "d": "1",
+            "del": "1",
+            "v": "three"
+          }
+        ],
+        "focus": "BUTTON",
+        "dirty": true
+      },
+      "exceptions": []
+    },
+    "S5b empty middle line focused, click x on the first line (hold 200ms)": {
+      "before": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "one",
+              "",
+              "three"
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "one"
+          },
+          {
+            "d": "1",
+            "del": "1",
+            "v": ""
+          },
+          {
+            "d": "2",
+            "del": "2",
+            "v": "three"
+          }
+        ],
+        "focus": "detail#1 value=\"\"",
+        "dirty": true
+      },
+      "afterClick": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "three"
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "three"
+          }
+        ],
+        "focus": "BODY",
+        "dirty": true
+      },
+      "exceptions": []
+    },
+    "S5c empty middle line blurred to the name input, then click x on the line \"three\"": {
+      "before": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "one",
+              "",
+              "three"
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "one"
+          },
+          {
+            "d": "1",
+            "del": "1",
+            "v": ""
+          },
+          {
+            "d": "2",
+            "del": "2",
+            "v": "three"
+          }
+        ],
+        "focus": "detail#1 value=\"\"",
+        "dirty": true
+      },
+      "afterBlur": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "one",
+              "three"
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "one"
+          },
+          {
+            "d": "1",
+            "del": "1",
+            "v": "three"
+          }
+        ],
+        "focus": "f=name",
+        "dirty": true
+      },
+      "indexOfThreeBeforeDelete": 1,
+      "afterClick": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "one"
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "one"
+          }
+        ],
+        "focus": "BODY",
+        "dirty": true
+      },
+      "exceptions": []
+    },
+    "S8 empty line focused, click + 일정 추가 (hold 200ms)": {
+      "before": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              ""
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": ""
+          }
+        ],
+        "focus": "detail#0 value=\"\"",
+        "dirty": true
+      },
+      "afterClick": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            []
+          ]
+        ],
+        "domLines": [],
+        "focus": "BUTTON",
+        "dirty": true
+      },
+      "rows3Details": [],
+      "exceptions": []
+    },
+    "S9 empty line focused, click the name input of another row": {
+      "before": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              ""
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": ""
+          }
+        ],
+        "focus": "detail#0 value=\"\"",
+        "dirty": true
+      },
+      "afterClick": {
+        "rows": 6,
+        "sel": 5,
+        "details": [
+          [
+            3,
+            []
+          ]
+        ],
+        "domLines": [],
+        "focus": "f=name",
+        "dirty": true
+      },
+      "block3Details": [],
+      "exceptions": []
+    },
+    "S10 empty line focused, click the own x of that empty line (hold 200ms)": {
+      "before": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "keep",
+              ""
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "keep"
+          },
+          {
+            "d": "1",
+            "del": "1",
+            "v": ""
+          }
+        ],
+        "focus": "detail#1 value=\"\"",
+        "dirty": true
+      },
+      "afterClick": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "keep"
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "keep"
+          }
+        ],
+        "focus": "BODY",
+        "dirty": true
+      },
+      "exceptions": []
+    },
+    "S11 empty line focused, press Tab to move to the next control": {
+      "before": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "keep",
+              ""
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "keep"
+          },
+          {
+            "d": "1",
+            "del": "1",
+            "v": ""
+          }
+        ],
+        "focus": "detail#1 value=\"\"",
+        "dirty": true
+      },
+      "afterTab": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "keep"
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "keep"
+          }
+        ],
+        "focus": "BODY",
+        "dirty": true
+      },
+      "exceptions": []
+    },
+    "S6a export clicked while an empty line is focused": {
+      "before": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "keep",
+              ""
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "keep"
+          },
+          {
+            "d": "1",
+            "del": "1",
+            "v": ""
+          }
+        ],
+        "focus": "detail#1 value=\"\"",
+        "dirty": true
+      },
+      "afterExport": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "keep"
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "keep"
+          }
+        ],
+        "focus": "BUTTON",
+        "dirty": false
+      },
+      "saved": [
+        {
+          "name": "timetables-2026-11-19.json",
+          "blocks": [
+            [
+              {
+                "name": "잠"
+              },
+              {
+                "name": "아침"
+              },
+              {
+                "name": "공부",
+                "details": [
+                  "keep"
+                ]
+              },
+              {
+                "name": "점심"
+              },
+              {
+                "name": "놀기"
+              },
+              {
+                "name": "저녁"
+              }
+            ]
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    "S6b export with empty strings stored by other means": {
+      "liveBeforeExport": {
+        "rows": 6,
+        "sel": null,
+        "details": [
+          [
+            3,
+            [
+              "a",
+              "",
+              "b",
+              ""
+            ]
+          ],
+          [
+            4,
+            [
+              "",
+              ""
+            ]
+          ],
+          [
+            5,
+            []
+          ]
+        ],
+        "domLines": null,
+        "focus": "BODY",
+        "dirty": false
+      },
+      "liveAfterExport": {
+        "rows": 6,
+        "sel": null,
+        "details": [
+          [
+            3,
+            [
+              "a",
+              "",
+              "b",
+              ""
+            ]
+          ],
+          [
+            4,
+            [
+              "",
+              ""
+            ]
+          ],
+          [
+            5,
+            []
+          ]
+        ],
+        "domLines": null,
+        "focus": "BUTTON",
+        "dirty": false
+      },
+      "saved": [
+        {
+          "name": "timetables-2026-11-19.json",
+          "blocks": [
+            [
+              {
+                "name": "잠"
+              },
+              {
+                "name": "아침"
+              },
+              {
+                "name": "공부",
+                "details": [
+                  "a",
+                  "b"
+                ]
+              },
+              {
+                "name": "점심",
+                "details": []
+              },
+              {
+                "name": "놀기",
+                "details": []
+              },
+              {
+                "name": "저녁"
+              }
+            ]
+          ]
+        }
+      ],
+      "savedBlocksWithDetailsKey": [
+        [
+          [
+            "잠",
+            null
+          ],
+          [
+            "아침",
+            null
+          ],
+          [
+            "공부",
+            [
+              "a",
+              "b"
+            ]
+          ],
+          [
+            "점심",
+            []
+          ],
+          [
+            "놀기",
+            []
+          ],
+          [
+            "저녁",
+            null
+          ]
+        ]
+      ],
+      "exceptions": []
+    },
+    "S7 Enter on a non-empty line adds a focused empty line": {
+      "afterEnter": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              "abc",
+              ""
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": "abc"
+          },
+          {
+            "d": "1",
+            "del": "1",
+            "v": ""
+          }
+        ],
+        "focus": "detail#1 value=\"\"",
+        "dirty": true
+      },
+      "exceptions": []
+    },
+    "R1 name edit": {
+      "name": "공부X",
+      "rowInput": "공부X",
+      "center": true,
+      "exceptions": []
+    },
+    "R2 color edit (input event dispatched, native picker not drivable)": {
+      "color": "#aabbcc",
+      "slice": "#aabbcc",
+      "exceptions": []
+    },
+    "R3 + 일정 추가": {
+      "rowsBefore": 6,
+      "afterAdd": {
+        "rows": 7,
+        "sel": 7,
+        "details": [],
+        "domLines": [],
+        "focus": "f=name",
+        "dirty": true
+      },
+      "exceptions": []
+    },
+    "R4 import example.json then export": {
+      "afterImportDetailsMatchExample": true,
+      "savedDetailsMatchExample": true,
+      "savedTables": 2,
+      "firstTableDetails": [
+        [],
+        [
+          "씻기",
+          "아침 식사"
+        ],
+        [],
+        [
+          "메일 확인",
+          "주요 업무 1건"
+        ],
+        [],
+        [
+          "회의",
+          "문서 정리"
+        ],
+        [
+          "러닝 30분"
+        ],
+        [],
+        [
+          "독서",
+          "취미"
+        ]
+      ],
+      "dialogs": [],
+      "exceptions": []
+    }
+  }
+}
