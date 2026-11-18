@@ -1,0 +1,34 @@
+{
+  "rowsBefore": 6,
+  "edited": {
+    "rows": 7,
+    "dirty": true,
+    "names": [
+      "아침",
+      "공부",
+      "점심",
+      "놀기",
+      "저녁",
+      "독서",
+      "잠"
+    ]
+  },
+  "afterImport": {
+    "rows": 7,
+    "table": "내 시간표",
+    "dirty": true
+  },
+  "importDialogs": [
+    {
+      "type": "confirm",
+      "message": "저장하지 않은 변경이 있어요. 불러오면 지금 시간표 목록이 파일 내용으로 바뀌고 변경은 사라져요. 계속할까요?"
+    }
+  ],
+  "reloadDialogs": [
+    {
+      "type": "beforeunload",
+      "message": ""
+    }
+  ],
+  "rowsAfterReload": 6
+}
