@@ -202,6 +202,7 @@ const list = $('#list');
 const blockOf = el => blocks.find(b => b.id === +el.closest('.row').dataset.id);
 
 function addDetail(b) {
+  document.activeElement.blur(); // 비어 있던 줄은 여기서 먼저 사라진다 (다시 그리다가 포커스를 잃으면 인덱스가 어긋남)
   (b.details ||= []).push('');
   renderList(); save();
   document.querySelector(`.row[data-id="${b.id}"] [data-d="${b.details.length - 1}"]`).focus();
@@ -227,11 +228,26 @@ list.addEventListener('change', e => {
   say(ok ? '' : '그 시간으로는 바꿀 수 없어요 (옆 일정이 10분보다 짧아지거나 시간이 너무 짧아요)');
   syncTimes(); draw(); save();
 });
+list.addEventListener('focusout', e => {
+  if (e.target.dataset.d === undefined || e.target.value) return;
+  const box = e.target.closest('.details');
+  blockOf(e.target).details.splice(+e.target.dataset.d, 1);
+  e.target.closest('.d').remove();
+  box.querySelectorAll('.d').forEach((d, i) => { d.querySelector('[data-d]').dataset.d = d.querySelector('[data-deld]').dataset.deld = i; });
+  save();
+});
 list.addEventListener('focusout', e => { if (e.target.matches('[data-f=start],[data-f=end]') && !e.target.value) syncTimes(); });
 list.addEventListener('focusin', e => { const row = e.target.closest('.row'); if (row) select(+row.dataset.id); });
+// 빈 줄이 포커스를 잃어 사라지면 버튼이 밀려나 클릭이 빗나가므로, 버튼을 눌러도 입력칸의 포커스는 그대로 둔다
+list.addEventListener('mousedown', e => { if (e.target.matches('[data-addd],[data-deld]')) e.preventDefault(); });
 list.addEventListener('click', e => {
   if (e.target.matches('[data-addd]')) return addDetail(blockOf(e.target));
-  if (e.target.matches('[data-deld]')) { blockOf(e.target).details.splice(+e.target.dataset.deld, 1); renderList(); save(); return; }
+  if (e.target.matches('[data-deld]')) {
+    const b = blockOf(e.target), line = e.target.closest('.d');
+    document.activeElement.blur();
+    if (line.isConnected) b.details.splice(+e.target.dataset.deld, 1); // 빈 줄 자신의 ×면 위 blur 로 이미 지워짐
+    renderList(); save(); return;
+  }
   if (!e.target.matches('[data-del]')) return;
   const id = +e.target.closest('.row').dataset.id;
   blocks = blocks.filter(b => b.id !== id);
@@ -304,7 +320,7 @@ $('#delt').onclick = () => {
 // ---- 파일로 저장 / 불러오기 (.json, 모든 시간표) ----
 $('#exp').onclick = () => {
   sync(); dirty = false;
-  const data = {app: 'timetable', version: 1, tables: store.tables.map(t => ({name: t.name, blocks: t.blocks.map(({id, ...b}) => b)}))};
+  const data = {app: 'timetable', version: 1, tables: store.tables.map(t => ({name: t.name, blocks: t.blocks.map(({id, ...b}) => b.details ? {...b, details: b.details.filter(d => d !== '')} : b)}))};
   const text = JSON.stringify(data, null, 2), name = `timetables-${new Date().toLocaleDateString('sv-SE')}.json`;
   // 일반 다운로드. 브라우저가 조용히 다운로드 폴더에 저장하므로 안내 문구를 띄움
   // (showSaveFilePicker 는 앱 내장 브라우저에서 곧바로 AbortError 가 나서 취소와 구분이 안 돼 쓰지 않음)
