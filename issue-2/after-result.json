@@ -1,0 +1,96 @@
+{
+  "label": "after",
+  "url": "file:///Users/gimdonghyeon/Git/rosedskim/time-planner/circle-planner/index.html",
+  "results": [
+    {
+      "frozenInstant": "2026-11-19T01:00:00+09:00",
+      "env": {
+        "tzOffsetMin": -540,
+        "iso": "2026-11-18T16:00:00.000Z",
+        "localDate": "2026-11-19"
+      },
+      "anchorDownload": [
+        "timetables-2026-11-19.json"
+      ],
+      "downloadEvent": [
+        "timetables-2026-11-19.json"
+      ],
+      "fileOnDisk": [
+        "timetables-2026-11-19.json"
+      ],
+      "msg": "\"timetables-2026-11-19.json\" 다운로드를 시작했어요. 브라우저의 다운로드 폴더/목록을 확인하세요.",
+      "parsed": {
+        "app": "timetable",
+        "version": 1,
+        "tables": 1,
+        "blocksInFirst": 6,
+        "firstBlockKeys": [
+          "name",
+          "color",
+          "start",
+          "end"
+        ]
+      }
+    },
+    {
+      "frozenInstant": "2026-11-19T12:00:00+09:00",
+      "env": {
+        "tzOffsetMin": -540,
+        "iso": "2026-11-19T03:00:00.000Z",
+        "localDate": "2026-11-19"
+      },
+      "anchorDownload": [
+        "timetables-2026-11-19.json"
+      ],
+      "downloadEvent": [
+        "timetables-2026-11-19.json"
+      ],
+      "fileOnDisk": [
+        "timetables-2026-11-19.json"
+      ],
+      "msg": "\"timetables-2026-11-19.json\" 다운로드를 시작했어요. 브라우저의 다운로드 폴더/목록을 확인하세요.",
+      "parsed": {
+        "app": "timetable",
+        "version": 1,
+        "tables": 1,
+        "blocksInFirst": 6,
+        "firstBlockKeys": [
+          "name",
+          "color",
+          "start",
+          "end"
+        ]
+      }
+    },
+    {
+      "frozenInstant": "2026-11-19T23:59:00+09:00",
+      "env": {
+        "tzOffsetMin": -540,
+        "iso": "2026-11-19T14:59:00.000Z",
+        "localDate": "2026-11-19"
+      },
+      "anchorDownload": [
+        "timetables-2026-11-19.json"
+      ],
+      "downloadEvent": [
+        "timetables-2026-11-19.json"
+      ],
+      "fileOnDisk": [
+        "timetables-2026-11-19.json"
+      ],
+      "msg": "\"timetables-2026-11-19.json\" 다운로드를 시작했어요. 브라우저의 다운로드 폴더/목록을 확인하세요.",
+      "parsed": {
+        "app": "timetable",
+        "version": 1,
+        "tables": 1,
+        "blocksInFirst": 6,
+        "firstBlockKeys": [
+          "name",
+          "color",
+          "start",
+          "end"
+        ]
+      }
+    }
+  ]
+}
