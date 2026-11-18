@@ -1,0 +1,61 @@
+{
+  "label": "after",
+  "url": "file:///Users/gimdonghyeon/Git/rosedskim/time-planner/circle-planner/index.html",
+  "exceptions": [],
+  "results": [
+    {
+      "frozen": "00:00",
+      "redLines": 1,
+      "timeLikeTexts": [
+        "00:00"
+      ],
+      "checkboxesInBar": 1,
+      "barText": "내 시간표\n+ 새 시간표\n복사\n삭제\n현재 시각 선\n⬇ 파일로 저장\n⬆ 파일 불러오기"
+    },
+    {
+      "frozen": "03:00",
+      "redLines": 1,
+      "timeLikeTexts": [
+        "03:00"
+      ],
+      "checkboxesInBar": 1,
+      "barText": "내 시간표\n+ 새 시간표\n복사\n삭제\n현재 시각 선\n⬇ 파일로 저장\n⬆ 파일 불러오기"
+    },
+    {
+      "frozen": "09:10",
+      "redLines": 1,
+      "timeLikeTexts": [
+        "09:10"
+      ],
+      "checkboxesInBar": 1,
+      "barText": "내 시간표\n+ 새 시간표\n복사\n삭제\n현재 시각 선\n⬇ 파일로 저장\n⬆ 파일 불러오기"
+    },
+    {
+      "frozen": "12:00",
+      "redLines": 1,
+      "timeLikeTexts": [
+        "12:00"
+      ],
+      "checkboxesInBar": 1,
+      "barText": "내 시간표\n+ 새 시간표\n복사\n삭제\n현재 시각 선\n⬇ 파일로 저장\n⬆ 파일 불러오기"
+    },
+    {
+      "frozen": "15:30",
+      "redLines": 1,
+      "timeLikeTexts": [
+        "15:30"
+      ],
+      "checkboxesInBar": 1,
+      "barText": "내 시간표\n+ 새 시간표\n복사\n삭제\n현재 시각 선\n⬇ 파일로 저장\n⬆ 파일 불러오기"
+    },
+    {
+      "frozen": "23:50",
+      "redLines": 1,
+      "timeLikeTexts": [
+        "23:50"
+      ],
+      "checkboxesInBar": 1,
+      "barText": "내 시간표\n+ 새 시간표\n복사\n삭제\n현재 시각 선\n⬇ 파일로 저장\n⬆ 파일 불러오기"
+    }
+  ]
+}

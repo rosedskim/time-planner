@@ -1,0 +1,420 @@
+{
+  "url": "file:///Users/gimdonghyeon/Git/rosedskim/time-planner/circle-planner/index.html",
+  "scenarios": {
+    "E0_export_keys_fresh": {
+      "top": [
+        "app",
+        "version",
+        "tables"
+      ],
+      "table": [
+        "name",
+        "blocks"
+      ],
+      "block": [
+        "name",
+        "color",
+        "start",
+        "end"
+      ]
+    },
+    "T1a_initial": {
+      "checkbox": true,
+      "redLines": 1,
+      "pills": 1,
+      "pillTexts": [
+        "09:10"
+      ],
+      "anyTimeText": [
+        "09:10"
+      ],
+      "center": [
+        "하루"
+      ],
+      "dirty": false,
+      "msg": "",
+      "tables": 1,
+      "current": "내 시간표"
+    },
+    "T1b_after_click_off": {
+      "checkbox": false,
+      "redLines": 0,
+      "pills": 0,
+      "pillTexts": [],
+      "anyTimeText": [],
+      "center": [
+        "하루"
+      ],
+      "dirty": false,
+      "msg": "",
+      "tables": 1,
+      "current": "내 시간표"
+    },
+    "T1c_after_click_on": {
+      "checkbox": true,
+      "redLines": 1,
+      "pills": 1,
+      "pillTexts": [
+        "09:10"
+      ],
+      "anyTimeText": [
+        "09:10"
+      ],
+      "center": [
+        "하루"
+      ],
+      "dirty": false,
+      "msg": "",
+      "tables": 1,
+      "current": "내 시간표"
+    },
+    "T2a_space_off": {
+      "checkbox": false,
+      "redLines": 0,
+      "pills": 0,
+      "pillTexts": [],
+      "anyTimeText": [],
+      "center": [
+        "하루"
+      ],
+      "dirty": false,
+      "msg": "",
+      "tables": 1,
+      "current": "내 시간표"
+    },
+    "T2b_space_on": {
+      "checkbox": true,
+      "redLines": 1,
+      "pills": 1,
+      "pillTexts": [
+        "09:10"
+      ],
+      "anyTimeText": [
+        "09:10"
+      ],
+      "center": [
+        "하루"
+      ],
+      "dirty": false,
+      "msg": "",
+      "tables": 1,
+      "current": "내 시간표"
+    },
+    "T2c_label_click": {
+      "checkbox": false,
+      "redLines": 0,
+      "pills": 0,
+      "pillTexts": [],
+      "anyTimeText": [],
+      "center": [
+        "하루"
+      ],
+      "dirty": false,
+      "msg": "",
+      "tables": 1,
+      "current": "내 시간표"
+    },
+    "T3_interval_registered": [
+      60000
+    ],
+    "T3a_on_tick_0911": {
+      "checkbox": true,
+      "redLines": 1,
+      "pills": 1,
+      "pillTexts": [
+        "09:11"
+      ],
+      "anyTimeText": [
+        "09:11"
+      ],
+      "center": [
+        "하루"
+      ],
+      "dirty": false,
+      "msg": "",
+      "tables": 1,
+      "current": "내 시간표"
+    },
+    "T3b_off_tick_0912": {
+      "checkbox": false,
+      "redLines": 0,
+      "pills": 0,
+      "pillTexts": [],
+      "anyTimeText": [],
+      "center": [
+        "하루"
+      ],
+      "dirty": false,
+      "msg": "",
+      "tables": 1,
+      "current": "내 시간표"
+    },
+    "T3c_off_tick_0913": {
+      "checkbox": false,
+      "redLines": 0,
+      "pills": 0,
+      "pillTexts": [],
+      "anyTimeText": [],
+      "center": [
+        "하루"
+      ],
+      "dirty": false,
+      "msg": "",
+      "tables": 1,
+      "current": "내 시간표"
+    },
+    "T3d_on_again_shows_current_clock": {
+      "checkbox": true,
+      "redLines": 1,
+      "pills": 1,
+      "pillTexts": [
+        "09:13"
+      ],
+      "anyTimeText": [
+        "09:13"
+      ],
+      "center": [
+        "하루"
+      ],
+      "dirty": false,
+      "msg": "",
+      "tables": 1,
+      "current": "내 시간표"
+    },
+    "T3e_on_tick_0914": {
+      "checkbox": true,
+      "redLines": 1,
+      "pills": 1,
+      "pillTexts": [
+        "09:14"
+      ],
+      "anyTimeText": [
+        "09:14"
+      ],
+      "center": [
+        "하루"
+      ],
+      "dirty": false,
+      "msg": "",
+      "tables": 1,
+      "current": "내 시간표"
+    },
+    "T4a_fresh_dirty": false,
+    "T4b_after_two_toggles_dirty": false,
+    "T4c_after_edit_dirty": true,
+    "T4d_after_export_dirty": false,
+    "T4e_after_export_then_toggle_dirty": false,
+    "T5_export": {
+      "keysNow": {
+        "top": [
+          "app",
+          "version",
+          "tables"
+        ],
+        "table": [
+          "name",
+          "blocks"
+        ],
+        "block": [
+          "name",
+          "color",
+          "start",
+          "end"
+        ]
+      },
+      "keysBefore": {
+        "top": [
+          "app",
+          "version",
+          "tables"
+        ],
+        "table": [
+          "name",
+          "blocks"
+        ],
+        "block": [
+          "name",
+          "color",
+          "start",
+          "end"
+        ]
+      },
+      "sameKeysAsBefore": true,
+      "onEqualsOff": true,
+      "equalsBeforeChangeExport": true,
+      "textMentionsShow": false
+    },
+    "T6_OFF_select_block": {
+      "checkbox": false,
+      "redLines": 0,
+      "pills": 0,
+      "pillTexts": [],
+      "center": [
+        "공부",
+        "09:00~12:00"
+      ],
+      "tables": 1,
+      "current": "내 시간표",
+      "dirty": false
+    },
+    "T6_OFF_drag_result": {
+      "gongbu": 560,
+      "fmt": "09:20"
+    },
+    "T6_OFF_drag_handle": {
+      "checkbox": false,
+      "redLines": 0,
+      "pills": 0,
+      "pillTexts": [],
+      "center": [
+        "공부",
+        "09:20~12:00"
+      ],
+      "tables": 1,
+      "current": "내 시간표",
+      "dirty": true
+    },
+    "T6_OFF_hover": {
+      "cls": "handle",
+      "cursor": "grab"
+    },
+    "T6_OFF_new_table": {
+      "checkbox": false,
+      "redLines": 0,
+      "pills": 0,
+      "pillTexts": [],
+      "center": [
+        "하루"
+      ],
+      "tables": 2,
+      "current": "새 시간표",
+      "dirty": true
+    },
+    "T6_OFF_switch_table": {
+      "checkbox": false,
+      "redLines": 0,
+      "pills": 0,
+      "pillTexts": [],
+      "center": [
+        "하루"
+      ],
+      "tables": 2,
+      "current": "내 시간표",
+      "dirty": true
+    },
+    "T6_OFF_import_example": {
+      "checkbox": false,
+      "redLines": 0,
+      "pills": 0,
+      "pillTexts": [],
+      "center": [
+        "하루"
+      ],
+      "tables": 2,
+      "current": "평일 예시",
+      "dirty": false
+    },
+    "T6_OFF_exceptions": [],
+    "T6_OFF_dialogs": [
+      "저장하지 않은 변경이 있어요. 불러오면 지금 시간표 목록이 파일 내용으로 바뀌고 변경은 사라져요. 계속할까요?"
+    ],
+    "T6_ON_select_block": {
+      "checkbox": true,
+      "redLines": 1,
+      "pills": 1,
+      "pillTexts": [
+        "09:10"
+      ],
+      "center": [
+        "공부",
+        "09:00~12:00"
+      ],
+      "tables": 1,
+      "current": "내 시간표",
+      "dirty": false
+    },
+    "T6_ON_drag_result": {
+      "gongbu": 560,
+      "fmt": "09:20"
+    },
+    "T6_ON_drag_handle": {
+      "checkbox": true,
+      "redLines": 1,
+      "pills": 1,
+      "pillTexts": [
+        "09:10"
+      ],
+      "center": [
+        "공부",
+        "09:20~12:00"
+      ],
+      "tables": 1,
+      "current": "내 시간표",
+      "dirty": true
+    },
+    "T6_ON_hover": {
+      "cls": "handle",
+      "cursor": "grab"
+    },
+    "T6_ON_new_table": {
+      "checkbox": true,
+      "redLines": 1,
+      "pills": 1,
+      "pillTexts": [
+        "09:10"
+      ],
+      "center": [
+        "하루"
+      ],
+      "tables": 2,
+      "current": "새 시간표",
+      "dirty": true
+    },
+    "T6_ON_switch_table": {
+      "checkbox": true,
+      "redLines": 1,
+      "pills": 1,
+      "pillTexts": [
+        "09:10"
+      ],
+      "center": [
+        "하루"
+      ],
+      "tables": 2,
+      "current": "내 시간표",
+      "dirty": true
+    },
+    "T6_ON_import_example": {
+      "checkbox": true,
+      "redLines": 1,
+      "pills": 1,
+      "pillTexts": [
+        "09:10"
+      ],
+      "center": [
+        "하루"
+      ],
+      "tables": 2,
+      "current": "평일 예시",
+      "dirty": false
+    },
+    "T6_ON_exceptions": [],
+    "T6_ON_dialogs": [
+      "저장하지 않은 변경이 있어요. 불러오면 지금 시간표 목록이 파일 내용으로 바뀌고 변경은 사라져요. 계속할까요?"
+    ],
+    "T7_elementFromPoint_at_pill_center": "slice",
+    "T7_click_on_pill_selected": {
+      "sel": 3,
+      "name": "공부"
+    },
+    "T8_center_label_on": [
+      "공부",
+      "09:00~12:00"
+    ],
+    "T8_center_label_off": [
+      "공부",
+      "09:00~12:00"
+    ]
+  },
+  "exceptions": []
+}

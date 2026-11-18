@@ -1,0 +1,23 @@
+{
+  "url": "file:///private/tmp/claude-501/-Users-gimdonghyeon--claude-spares-spare-qox9X3/197781c0-c678-4495-bbe6-53c3b1ff95d8/scratchpad/issue-7/before.html",
+  "scenarios": {
+    "E0_export_keys_fresh": {
+      "top": [
+        "app",
+        "version",
+        "tables"
+      ],
+      "table": [
+        "name",
+        "blocks"
+      ],
+      "block": [
+        "name",
+        "color",
+        "start",
+        "end"
+      ]
+    }
+  },
+  "exceptions": []
+}
