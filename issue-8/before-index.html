@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>개인 시간표</title>
+<style>
+  :root { --bg:#fffaf0; --ink:#3b3226; --line:#e4d9c4; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:24px 16px; background:var(--bg); color:var(--ink); font:15px/1.4 -apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif; }
+  h1 { margin:0 0 16px; text-align:center; font-size:22px; }
+  #bar { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 auto 20px; }
+  #bar label { display:flex; align-items:center; gap:4px; }
+  #bar select, #bar input { font:inherit; border:1px solid var(--line); border-radius:8px; padding:4px 8px; background:#fff; color:inherit; max-width:160px; }
+  main { display:flex; flex-wrap:wrap; gap:24px; justify-content:center; align-items:flex-start; max-width:960px; margin:0 auto; }
+  svg { width:min(440px,100%); height:auto; touch-action:none; flex:none; }
+  .slice { stroke:#fff; stroke-width:1.5; cursor:pointer; }
+  .slice.sel { stroke:var(--ink); stroke-width:3; }
+  .handle { fill:#fff; stroke:var(--ink); stroke-width:2; cursor:grab; }
+  .label { font-size:13px; pointer-events:none; fill:var(--ink); }
+  .hour { font-size:13px; fill:#8a7b66; text-anchor:middle; dominant-baseline:central; }
+  .center { text-anchor:middle; fill:var(--ink); }
+  .now { font-size:12px; font-weight:600; fill:#fff; text-anchor:middle; dominant-baseline:central; pointer-events:none; }
+  #panel { flex:1 1 320px; max-width:460px; }
+  #list { display:flex; flex-direction:column; }
+  .row { display:flex; gap:6px; align-items:center; padding:6px; margin-bottom:6px; border:2px solid transparent; border-radius:10px; background:#fff; }
+  .row.sel { border-color:var(--ink); }
+  .row input { font:inherit; min-width:0; border:1px solid var(--line); border-radius:6px; padding:4px 6px; background:#fff; color:inherit; }
+  .row:not(.sel) .details { display:none; }
+  .details { flex:0 0 100%; padding:4px 0 2px 38px; }
+  .details .d { display:flex; gap:6px; align-items:center; margin-bottom:4px; }
+  .details .d input { flex:1; }
+  .details button[data-addd] { font-size:13px; padding:2px 8px; border-style:dashed; }
+  .row input[type=color] { width:32px; height:32px; padding:0; flex:none; }
+  .row input[data-f=name] { flex:1; }
+  .row input[type=time] { width:118px; }
+  .row { flex-wrap:wrap; }
+  button { font:inherit; cursor:pointer; border:1px solid var(--line); border-radius:8px; background:#fff; padding:4px 10px; }
+  #add { width:100%; padding:8px; border-style:dashed; }
+  #msg { color:#c0392b; font-size:13px; margin:-12px 0 12px; min-height:1em; text-align:center; }
+  p.hint { color:#8a7b66; font-size:13px; margin:12px 0 0; }
+</style>
+</head>
+<body>
+<h1>🕒 개인 시간표</h1>
+<div id="bar">
+  <select id="tables" title="저장된 시간표 선택"></select>
+  <input id="tname" maxlength="20" title="시간표 이름">
+  <button id="newt">+ 새 시간표</button>
+  <button id="copyt">복사</button>
+  <button id="delt">삭제</button>
+  <label><input id="shownow" type="checkbox" checked>현재 시각 선</label>
+  <button id="exp" title="모든 시간표를 .json 파일로 저장">⬇ 파일로 저장</button>
+  <button id="imp" title="저장한 .json 파일로 시간표 목록을 바꾸기">⬆ 파일 불러오기</button>
+  <input id="impfile" type="file" accept=".json,application/json" hidden>
+</div>
+<p id="msg"></p>
+<main>
+  <svg id="clock" viewBox="0 0 440 440"></svg>
+  <div id="panel">
+    <div id="list"></div>
+    <button id="add">+ 일정 추가</button>
+    <p class="hint">동그라미 손잡이를 돌려 시간 경계를 옮길 수 있어요 (10분 단위). 시간을 늘리면 옆 일정이 밀려나고, 일정은 겹치지 않아요 (최소 10분). 조각이나 목록의 일정을 누르면 선택되고, 선택한 일정 아래에서 세부사항을 적을 수 있어요 (Enter로 한 줄 추가).</p>
+    <p class="hint"><b>저장은 자동이 아니에요.</b> 새로고침하면 사라지니, 끝나면 위의 <b>⬇ 파일로 저장</b>을 누르고 나중에 <b>⬆ 파일 불러오기</b>로 다시 열어요. 불러오면 시간표 목록이 파일에 있는 것으로 바뀌어요.</p>
+  </div>
+</main>
+
+<script>
+const UNIT = 10; // 시간 조절 단위이자 일정 최소 길이(분)
+const MIN = UNIT;
+const C = 220, R = 170, r = 65;
+const PALETTE = ['#ffd6d6','#ffe8b8','#fff3a8','#d4f0c0','#bfe6f5','#d9ccf5','#f8cfe8','#cfe0c3'];
+const DEFAULT = [
+  {id:1, name:'잠',        color:'#d9ccf5', start:22*60+30, end:7*60},
+  {id:2, name:'아침',      color:'#ffe8b8', start:7*60,      end:8*60},
+  {id:3, name:'공부',      color:'#bfe6f5', start:9*60,      end:12*60},
+  {id:4, name:'점심',      color:'#ffd6d6', start:12*60,     end:13*60},
+  {id:5, name:'놀기',      color:'#d4f0c0', start:14*60,     end:17*60},
+  {id:6, name:'저녁',      color:'#fff3a8', start:18*60,     end:19*60},
+];
+
+// 데이터는 메모리에만 있다. 보관은 "파일로 저장"(.json)으로만 한다.
+const store = {tables: [{id: 1, name: '내 시간표', blocks: DEFAULT}]};
+let cur = store.tables[0];
+let blocks = cur.blocks, sel = null, drag = null;
+let dirty = false; // 마지막 파일 저장 이후 바뀐 게 있는지
+
+const $ = s => document.querySelector(s);
+const showNow = $('#shownow'); // 보기 설정이라 시간표 데이터가 아니고 dirty 에도 영향이 없다
+const sync = () => { cur.blocks = blocks; }; // 일정 삭제 등으로 blocks 배열이 바뀌었을 수 있어 현재 시간표에 되돌려 둠
+const save = () => { sync(); dirty = true; };
+const fmt = m => String(m / 60 | 0).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+const parse = t => { const [h, m] = t.split(':'); return Math.round((+h * 60 + +m) / UNIT) * UNIT % 1440; };
+const span = b => (b.end - b.start + 1440) % 1440 || 1440;
+const pt = (rad, m) => { const a = m / 1440 * 2 * Math.PI; return [C + rad * Math.sin(a), C - rad * Math.cos(a)]; };
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+const say = (t, ok) => { $('#msg').textContent = t; $('#msg').style.color = ok ? '#2e7d32' : ''; }; // ok=true 면 초록(안내), 아니면 빨강(오류)
+
+// b 가 차지한 시간과 겹치는 다른 일정의 앞/뒤를 깎아 밀어낸다.
+// 일정이 MIN 보다 좁아지거나 둘로 갈라져야 하면 false (이 경우 호출한 쪽이 되돌린다).
+function squeeze(b) {
+  const bl = span(b), moves = [];
+  for (const o of blocks) {
+    if (o === b) continue;
+    const os = (o.start - b.start + 1440) % 1440, ol = span(o);
+    if (os < bl) {                       // o 의 앞부분이 침범당함
+      if (os + ol > 1440 || os + ol - bl < MIN) return false;
+      moves.push([o, 'start', b.end]);
+    } else if (os + ol > 1440) {         // o 의 뒷부분이 침범당함
+      if (os + ol > 1440 + bl || 1440 - os < MIN) return false;
+      moves.push([o, 'end', b.start]);
+    }
+  }
+  moves.forEach(([o, f, v]) => o[f] = v);
+  return true;
+}
+
+// fn 이 false 를 돌려주면 모든 일정을 원래대로 되돌린다.
+function attempt(fn) {
+  const snap = blocks.map(b => [b, b.start, b.end]);
+  if (fn()) return true;
+  snap.forEach(([b, s, e]) => { b.start = s; b.end = e; });
+  return false;
+}
+
+// 분 m 에 있는 모든 경계(앞 일정 끝 + 뒤 일정 시작)를 d 분 옮긴다.
+function step(m, d) {
+  const nm = (m + d + 1440) % 1440;
+  const edges = blocks.flatMap(b => ['start', 'end'].map(f => [b, f])).filter(([b, f]) => b[f] === m);
+  const lens = edges.map(([b]) => span(b));
+  if (edges.some(([, f], i) => { const l = lens[i] + (f === 'end' ? d : -d); return l < MIN || l > 1435; })) return false;
+  edges.forEach(([b, f]) => b[f] = nm);
+  return [...new Set(edges.map(([b]) => b))].every(b => squeeze(b));
+}
+
+// 목록의 시간 입력칸과 줄 순서(CSS order)를 현재 데이터에 맞춘다 (포커스와 입력 중인 칸을 잃지 않도록 다시 그리거나 옮기지 않음)
+function syncTimes() {
+  document.querySelectorAll('.row').forEach(row => {
+    const b = blocks.find(b => b.id === +row.dataset.id);
+    row.style.order = blocks.filter(o => o.start < b.start).length;
+    for (const f of ['start', 'end']) {
+      const el = row.querySelector(`[data-f=${f}]`), v = fmt(b[f]);
+      if (el.value !== v) el.value = v;
+    }
+  });
+}
+
+function slicePath(b) {
+  const s = span(b), e = b.start + Math.min(s, 1439.9), big = s > 720 ? 1 : 0;
+  const [x1, y1] = pt(R, b.start), [x2, y2] = pt(R, e), [x3, y3] = pt(r, e), [x4, y4] = pt(r, b.start);
+  return `M${x1} ${y1}A${R} ${R} 0 ${big} 1 ${x2} ${y2}L${x3} ${y3}A${r} ${r} 0 ${big} 0 ${x4} ${y4}Z`;
+}
+
+function draw() {
+  let h = `<circle cx="${C}" cy="${C}" r="${(R + r) / 2}" fill="none" stroke="#f0e8d8" stroke-width="${R - r}"/>`;
+  for (const b of blocks) {
+    h += `<path class="slice${b.id === sel ? ' sel' : ''}" data-id="${b.id}" d="${slicePath(b)}" fill="${b.color}"/>`;
+  }
+  for (const b of blocks) {
+    if (span(b) < 40) continue;
+    const mid = b.start + span(b) / 2, a = mid / 4, [x, y] = pt((R + r) / 2, mid);
+    const rot = a < 180 ? a - 90 : a + 90;
+    h += `<text class="label" text-anchor="middle" dominant-baseline="central" transform="translate(${x} ${y}) rotate(${rot})">${esc(b.name.slice(0, 7))}</text>`;
+  }
+  for (let i = 0; i < 24; i++) {
+    const [x1, y1] = pt(R + 2, i * 60), [x2, y2] = pt(R + (i % 3 ? 6 : 10), i * 60);
+    h += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#8a7b66"/>`;
+    if (i % 3 === 0) { const [x, y] = pt(R + 26, i * 60); h += `<text class="hour" x="${x}" y="${y}">${i}</text>`; }
+  }
+  if (showNow.checked) {
+    const now = new Date(), nm = now.getHours() * 60 + now.getMinutes();
+    // 시각이 3시간마다 있는 시 숫자(R+26)와 가까우면 시각 표시를 링 안쪽으로 옮겨 숫자를 가리지 않게 한다
+    const inside = Math.abs((nm + 90) % 180 - 90) < 40, end = inside ? R : R + 28;
+    const [nx1, ny1] = pt(r, nm), [nx2, ny2] = pt(end, nm), [px, py] = pt(inside ? R - 24 : end, nm);
+    h += `<line x1="${nx1}" y1="${ny1}" x2="${nx2}" y2="${ny2}" stroke="#e5484d" stroke-width="2" pointer-events="none"/>`
+      + `<rect x="${px - 20}" y="${py - 9}" width="40" height="18" rx="9" fill="#d6343a" pointer-events="none"/><text class="now" x="${px}" y="${py}">${fmt(nm)}</text>`;
+  }
+  // 손잡이: 같은 분(minute)에 모인 경계는 하나로 보여 준다
+  for (const m of new Set(blocks.flatMap(b => [b.start, b.end]))) {
+    const [x, y] = pt(R, m);
+    h += `<circle class="handle" data-m="${m}" cx="${x}" cy="${y}" r="7"/>`;
+  }
+  const s = blocks.find(b => b.id === sel);
+  h += s
+    ? `<text class="center" x="${C}" y="${C - 8}" font-size="16" font-weight="600">${esc(s.name)}</text><text class="center" x="${C}" y="${C + 14}" font-size="12">${fmt(s.start)}~${fmt(s.end)}</text>`
+    : `<text class="center" x="${C}" y="${C + 5}" font-size="16" font-weight="600">하루</text>`;
+  $('#clock').innerHTML = h;
+}
+
+function renderList() {
+  $('#list').innerHTML = [...blocks].sort((a, b) => a.start - b.start).map(b => `
+    <div class="row${b.id === sel ? ' sel' : ''}" data-id="${b.id}">
+      <input type="color" data-f="color" value="${b.color}">
+      <input data-f="name" value="${esc(b.name)}" maxlength="12">
+      <input type="time" step="${UNIT * 60}" data-f="start" value="${fmt(b.start)}">~
+      <input type="time" step="${UNIT * 60}" data-f="end" value="${fmt(b.end)}">
+      <button data-del title="삭제">×</button>
+      <div class="details">
+        ${(b.details || []).map((t, i) => `<div class="d"><span>·</span><input data-d="${i}" value="${esc(t)}" placeholder="세부 내용" maxlength="40"><button data-deld="${i}" title="삭제">×</button></div>`).join('')}
+        <button data-addd>+ 세부사항</button>
+      </div>
+    </div>`).join('');
+}
+
+function select(id) {
+  sel = id;
+  document.querySelectorAll('.row').forEach(el => el.classList.toggle('sel', +el.dataset.id === id));
+  draw();
+}
+
+const list = $('#list');
+const blockOf = el => blocks.find(b => b.id === +el.closest('.row').dataset.id);
+
+// 포커스를 잃은 빈 세부사항 줄을 지운다. 줄이 먼저 사라지면 아래 버튼이 밀려나 누르던 클릭이 빗나가므로,
+// 마우스를 누르고 있으면 놓고 클릭 처리가 끝난 뒤로 미룬다. 다시 그리는 도중에 오는 focusout 도 같은 이유로 미룬다.
+let pressed = false;
+function sweep() {
+  if (pressed) return;
+  list.querySelectorAll('.row').forEach(row => {
+    const empty = [...row.querySelectorAll('.d')].filter(d => { const i = d.querySelector('[data-d]'); return !i.value && i !== document.activeElement; });
+    if (!empty.length) return;
+    empty.forEach(d => d.remove());
+    row.querySelectorAll('.d').forEach((d, i) => { d.querySelector('[data-d]').dataset.d = d.querySelector('[data-deld]').dataset.deld = i; });
+    blocks.find(b => b.id === +row.dataset.id).details = [...row.querySelectorAll('[data-d]')].map(i => i.value);
+  });
+}
+document.addEventListener('pointerdown', () => pressed = true, true);
+for (const t of ['pointerup', 'pointercancel']) document.addEventListener(t, () => { pressed = false; setTimeout(sweep); }, true);
+list.addEventListener('focusout', e => { if (e.target.dataset.d !== undefined) setTimeout(sweep); });
+
+function addDetail(b) {
+  (b.details ||= []).push('');
+  renderList(); save();
+  document.querySelector(`.row[data-id="${b.id}"] [data-d="${b.details.length - 1}"]`).focus();
+}
+
+list.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && e.target.dataset.d !== undefined) addDetail(blockOf(e.target));
+});
+
+list.addEventListener('input', e => {
+  if (e.target.dataset.d !== undefined) { blockOf(e.target).details[+e.target.dataset.d] = e.target.value; save(); return; }
+  const f = e.target.dataset.f;
+  if (f !== 'name' && f !== 'color') return;
+  blocks.find(b => b.id === +e.target.closest('.row').dataset.id)[f] = e.target.value;
+  draw(); save();
+});
+// 시간은 입력이 끝났을 때(change) 반영: 타이핑 중간값으로 옆 일정이 깎이지 않게
+list.addEventListener('change', e => {
+  const f = e.target.dataset.f;
+  if (f !== 'start' && f !== 'end' || !e.target.value) return;
+  const b = blocks.find(b => b.id === +e.target.closest('.row').dataset.id);
+  const ok = attempt(() => { b[f] = parse(e.target.value); const l = span(b); return l >= MIN && l <= 1435 && squeeze(b); });
+  say(ok ? '' : '그 시간으로는 바꿀 수 없어요 (옆 일정이 10분보다 짧아지거나 시간이 너무 짧아요)');
+  syncTimes(); draw(); save();
+});
+list.addEventListener('focusout', e => { if (e.target.matches('[data-f=start],[data-f=end]') && !e.target.value) syncTimes(); });
+list.addEventListener('focusin', e => { const row = e.target.closest('.row'); if (row) select(+row.dataset.id); });
+list.addEventListener('click', e => {
+  if (e.target.matches('[data-addd]')) return addDetail(blockOf(e.target));
+  if (e.target.matches('[data-deld]')) { blockOf(e.target).details.splice(+e.target.dataset.deld, 1); renderList(); save(); return; }
+  if (!e.target.matches('[data-del]')) return;
+  const id = +e.target.closest('.row').dataset.id;
+  blocks = blocks.filter(b => b.id !== id);
+  if (sel === id) sel = null;
+  renderList(); draw(); save();
+});
+
+$('#add').onclick = () => {
+  // 가장 넓은 빈 시간의 앞쪽에 최대 1시간짜리를 넣는다
+  const s = [...blocks].sort((a, b) => a.start - b.start);
+  let best = s.length ? {gap: 0, start: 0} : {gap: 60, start: 9 * 60};
+  s.forEach((b, i) => { const gap = (s[(i + 1) % s.length].start - b.end + 1440) % 1440; if (gap > best.gap) best = {gap, start: b.end}; });
+  if (best.gap < MIN) return say('빈 시간이 없어요. 다른 일정을 줄이거나 지워 주세요.');
+  say('');
+  const start = best.start, id = Math.max(0, ...blocks.map(b => b.id)) + 1;
+  blocks.push({id, name:'새 일정', color:PALETTE[blocks.length % PALETTE.length], start, end:(start + Math.min(60, best.gap)) % 1440});
+  sel = id; renderList(); draw(); save();
+  document.querySelector(`.row[data-id="${id}"] [data-f=name]`).select();
+};
+
+const svg = $('#clock');
+svg.addEventListener('click', e => { const s = e.target.closest('.slice'); if (s) select(+s.dataset.id); });
+svg.addEventListener('pointerdown', e => {
+  const hd = e.target.closest('.handle');
+  if (hd) { drag = +hd.dataset.m; say(''); e.preventDefault(); }
+});
+window.addEventListener('pointermove', e => {
+  if (drag == null) return;
+  const p = svg.createSVGPoint(); p.x = e.clientX; p.y = e.clientY;
+  const q = p.matrixTransform(svg.getScreenCTM().inverse());
+  const m = ((Math.round(Math.atan2(q.x - C, C - q.y) / (2 * Math.PI) * 1440 / UNIT) * UNIT) % 1440 + 1440) % 1440;
+  let left = ((m - drag + 720) % 1440 + 1440) % 1440 - 720; // 부호 있는 최단 이동량
+  if (!left) return;
+  const dir = Math.sign(left);
+  // 최대 UNIT 분씩 옮기며 밀어낸다. 더 못 밀면 그 자리에서 멈춤
+  for (left = Math.abs(left); left > 0; left -= UNIT) {
+    const d = dir * Math.min(UNIT, left);
+    if (!attempt(() => step(drag, d))) { say('옆 일정이 더 줄어들 수 없어요'); break; }
+    drag = (drag + d + 1440) % 1440;
+  }
+  draw(); syncTimes(); save();
+});
+window.addEventListener('pointerup', () => drag = null);
+
+// ---- 시간표 여러 개 (모든 변경은 자동 저장, 여기서는 고르기/만들기/지우기) ----
+const tablesEl = $('#tables'), nameEl = $('#tname');
+function renderBar() {
+  tablesEl.innerHTML = store.tables.map(t => `<option value="${t.id}"${t === cur ? ' selected' : ''}>${esc(t.name)}</option>`).join('');
+  nameEl.value = cur.name;
+}
+function openTable(t) {
+  sync(); cur = t; blocks = t.blocks; sel = null; say('');
+  renderBar(); renderList(); draw();
+}
+function addTable(name, bl) {
+  const t = {id: Math.max(...store.tables.map(t => t.id)) + 1, name, blocks: bl};
+  store.tables.push(t); openTable(t); dirty = true;
+}
+tablesEl.onchange = () => openTable(store.tables.find(t => t.id === +tablesEl.value));
+nameEl.oninput = () => { cur.name = nameEl.value || '이름 없음'; tablesEl.selectedOptions[0].textContent = cur.name; save(); };
+$('#newt').onclick = () => addTable('새 시간표', []);
+$('#copyt').onclick = () => addTable(cur.name + ' 복사', structuredClone(blocks));
+$('#delt').onclick = () => {
+  if (store.tables.length < 2) return say('시간표가 하나뿐이라 지울 수 없어요.');
+  if (!confirm(`"${cur.name}" 시간표를 삭제할까요?`)) return;
+  store.tables = store.tables.filter(t => t !== cur);
+  openTable(store.tables[0]); dirty = true;
+};
+
+// ---- 파일로 저장 / 불러오기 (.json, 모든 시간표) ----
+$('#exp').onclick = () => {
+  sync(); dirty = false;
+  const data = {app: 'timetable', version: 1, tables: store.tables.map(t => ({name: t.name, blocks: t.blocks.map(({id, ...b}) => b.details ? {...b, details: b.details.filter(d => d !== '')} : b)}))};
+  const text = JSON.stringify(data, null, 2), name = `timetables-${new Date().toLocaleDateString('sv-SE')}.json`;
+  // 일반 다운로드. 브라우저가 조용히 다운로드 폴더에 저장하므로 안내 문구를 띄움
+  // (showSaveFilePicker 는 앱 내장 브라우저에서 곧바로 AbortError 가 나서 취소와 구분이 안 돼 쓰지 않음)
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([text], {type: 'application/json'}));
+  a.download = name;
+  document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  say(`"${name}" 다운로드를 시작했어요. 브라우저의 다운로드 폴더/목록을 확인하세요.`, true);
+};
+
+const validBlock = b => b && typeof b.name === 'string' && /^#[0-9a-f]{6}$/i.test(b.color)
+  && [b.start, b.end].every(m => Number.isInteger(m) && m >= 0 && m < 1440) && b.start !== b.end;
+const overlaps = bl => bl.some(a => bl.some(b => {
+  const os = (b.start - a.start + 1440) % 1440;
+  return a !== b && (os < span(a) || os + span(b) > 1440);
+}));
+
+$('#imp').onclick = () => $('#impfile').click();
+$('#impfile').onchange = async e => {
+  const file = e.target.files[0];
+  e.target.value = ''; // 같은 파일을 다시 골라도 동작하게
+  if (!file) return;
+  let data;
+  try { data = JSON.parse(await file.text()); } catch (err) {}
+  if (!data || !Array.isArray(data.tables)) return alert('불러오기 실패: 시간표 파일 형식이 아니에요. 지금 화면은 그대로 둘게요.');
+  let id = 0, skipped = 0, offStep = 0; // offStep: UNIT 단위가 아니라 건너뛴 시간표 수. skipped: 형식 오류나 겹침으로 건너뛴 수
+  const added = [];
+  for (const t of data.tables) {
+    const bl = t && Array.isArray(t.blocks) ? t.blocks : null;
+    const ok = bl && bl.every(validBlock);
+    if (ok && bl.some(b => b.start % UNIT || b.end % UNIT)) { offStep++; continue; }
+    if (!ok || overlaps(bl)) { skipped++; continue; }
+    added.push({id: ++id, name: String(t.name || '이름 없음').slice(0, 20), blocks: bl.map((b, i) => ({
+      id: i + 1, name: b.name.slice(0, 12), color: b.color, start: b.start, end: b.end,
+      details: Array.isArray(b.details) ? b.details.filter(d => typeof d === 'string') : [],
+    }))});
+  }
+  if (!added.length) return alert('불러오기 실패: 파일에 쓸 수 있는 시간표가 없어요(비었거나 형식이 맞지 않거나 일정이 겹침).'
+    + (offStep ? ` 시각은 ${UNIT}분 단위여야 해서 ${offStep}개를 건너뛰었어요.` : '') + ' 지금 화면은 그대로 둘게요.');
+  if (dirty && !confirm('저장하지 않은 변경이 있어요. 불러오면 지금 시간표 목록이 파일 내용으로 바뀌고 변경은 사라져요. 계속할까요?')) return;
+  store.tables = added; // 목록 전체를 파일 내용으로 교체
+  openTable(added[0]); dirty = false;
+  if (skipped || offStep) alert(`${added.length}개 불러왔어요 (${[
+    skipped && `형식이 맞지 않거나 일정이 겹쳐서 ${skipped}개`, offStep && `시각은 ${UNIT}분 단위여야 해서 ${offStep}개`,
+  ].filter(Boolean).join(', ')}는 건너뜀)`);
+};
+
+showNow.onchange = draw;
+renderBar(); renderList(); draw();
+setInterval(draw, 60000); // 현재 시각 바늘 갱신
+</script>
+</body>
+</html>

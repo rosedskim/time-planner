@@ -1,0 +1,188 @@
+{
+  "url": "file:///Users/gimdonghyeon/Git/rosedskim/time-planner/circle-planner/index.html",
+  "scenarios": {
+    "a1 fresh page, click save": {
+      "msgBefore": {
+        "text": "",
+        "color": "rgb(192, 57, 43)",
+        "inlineStyleColor": "",
+        "visibleBox": 13
+      },
+      "dirtyBefore": false,
+      "msgAfter": {
+        "text": "",
+        "color": "rgb(192, 57, 43)",
+        "inlineStyleColor": "",
+        "visibleBox": 13
+      },
+      "dirtyAfter": false,
+      "save": {
+        "anchorDownload": [
+          "timetables-2026-11-19.json"
+        ],
+        "downloadCount": 1,
+        "validJson": true,
+        "parsed": {
+          "app": "timetable",
+          "version": 1,
+          "tables": 1,
+          "blocks": [
+            6
+          ]
+        }
+      },
+      "exceptions": [],
+      "dialogs": []
+    },
+    "a2 edit a name (dirty), click save": {
+      "dirtyBefore": true,
+      "msgAfter": {
+        "text": "",
+        "color": "rgb(192, 57, 43)",
+        "inlineStyleColor": "",
+        "visibleBox": 13
+      },
+      "dirtyAfter": false,
+      "save": {
+        "anchorDownload": [
+          "timetables-2026-11-19.json"
+        ],
+        "downloadCount": 1,
+        "validJson": true,
+        "parsed": {
+          "app": "timetable",
+          "version": 1,
+          "tables": 1,
+          "blocks": [
+            6
+          ]
+        }
+      },
+      "exceptions": [],
+      "dialogs": []
+    },
+    "c1 impossible time edit": {
+      "msg": {
+        "text": "그 시간으로는 바꿀 수 없어요 (옆 일정이 10분보다 짧아지거나 시간이 너무 짧아요)",
+        "color": "rgb(192, 57, 43)",
+        "inlineStyleColor": "",
+        "visibleBox": 18.1875
+      },
+      "exceptions": [],
+      "dialogs": []
+    },
+    "c2 add with no free time": {
+      "clicks": 8,
+      "msg": {
+        "text": "빈 시간이 없어요. 다른 일정을 줄이거나 지워 주세요.",
+        "color": "rgb(192, 57, 43)",
+        "inlineStyleColor": "",
+        "visibleBox": 18.1875
+      },
+      "exceptions": [],
+      "dialogs": []
+    },
+    "c3 delete the only table": {
+      "tables": 1,
+      "msg": {
+        "text": "시간표가 하나뿐이라 지울 수 없어요.",
+        "color": "rgb(192, 57, 43)",
+        "inlineStyleColor": "",
+        "visibleBox": 18.1875
+      },
+      "dialogs": [],
+      "exceptions": []
+    },
+    "c4 red notice on screen, then save": {
+      "redBefore": {
+        "text": "그 시간으로는 바꿀 수 없어요 (옆 일정이 10분보다 짧아지거나 시간이 너무 짧아요)",
+        "color": "rgb(192, 57, 43)",
+        "inlineStyleColor": "",
+        "visibleBox": 18.1875
+      },
+      "msgAfterSave": {
+        "text": "그 시간으로는 바꿀 수 없어요 (옆 일정이 10분보다 짧아지거나 시간이 너무 짧아요)",
+        "color": "rgb(192, 57, 43)",
+        "inlineStyleColor": "",
+        "visibleBox": 18.1875
+      },
+      "save": {
+        "anchorDownload": [
+          "timetables-2026-11-19.json"
+        ],
+        "downloadCount": 1,
+        "validJson": true,
+        "parsed": {
+          "app": "timetable",
+          "version": 1,
+          "tables": 1,
+          "blocks": [
+            6
+          ]
+        }
+      },
+      "exceptions": [],
+      "dialogs": []
+    },
+    "c5 red notice, save, then a successful action clears it": {
+      "msgAfterNewTable": {
+        "text": "",
+        "color": "rgb(192, 57, 43)",
+        "inlineStyleColor": "",
+        "visibleBox": 13
+      },
+      "exceptions": [],
+      "dialogs": []
+    },
+    "r1 regression flows": {
+      "tablesAfterNewAndCopy": 3,
+      "save1": {
+        "anchorDownload": [
+          "timetables-2026-11-19.json"
+        ],
+        "downloadCount": 1,
+        "validJson": true,
+        "parsed": {
+          "app": "timetable",
+          "version": 1,
+          "tables": 3,
+          "blocks": [
+            6,
+            0,
+            0
+          ]
+        }
+      },
+      "afterImport": {
+        "tables": 2,
+        "dirty": false,
+        "msg": {
+          "text": "",
+          "color": "rgb(192, 57, 43)",
+          "inlineStyleColor": "",
+          "visibleBox": 13
+        }
+      },
+      "save2": {
+        "anchorDownload": [
+          "timetables-2026-11-19.json",
+          "timetables-2026-11-19.json"
+        ],
+        "downloadCount": 2,
+        "validJson": true,
+        "parsed": {
+          "app": "timetable",
+          "version": 1,
+          "tables": 2,
+          "blocks": [
+            9,
+            7
+          ]
+        }
+      },
+      "afterSelect": 3,
+      "exceptions": [],
+      "dialogs": []
+    }
+  }
+}
