@@ -227,6 +227,7 @@ list.addEventListener('change', e => {
   say(ok ? '' : '그 시간으로는 바꿀 수 없어요 (옆 일정이 10분보다 짧아지거나 시간이 너무 짧아요)');
   syncTimes(); draw(); save();
 });
+list.addEventListener('focusout', e => { if (e.target.matches('[data-f=start],[data-f=end]') && !e.target.value) syncTimes(); });
 list.addEventListener('focusin', e => { const row = e.target.closest('.row'); if (row) select(+row.dataset.id); });
 list.addEventListener('click', e => {
   if (e.target.matches('[data-addd]')) return addDetail(blockOf(e.target));
