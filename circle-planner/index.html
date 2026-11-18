@@ -201,6 +201,23 @@ function select(id) {
 const list = $('#list');
 const blockOf = el => blocks.find(b => b.id === +el.closest('.row').dataset.id);
 
+// 포커스를 잃은 빈 세부사항 줄을 지운다. 줄이 먼저 사라지면 아래 버튼이 밀려나 누르던 클릭이 빗나가므로,
+// 마우스를 누르고 있으면 놓고 클릭 처리가 끝난 뒤로 미룬다. 다시 그리는 도중에 오는 focusout 도 같은 이유로 미룬다.
+let pressed = false;
+function sweep() {
+  if (pressed) return;
+  list.querySelectorAll('.row').forEach(row => {
+    const empty = [...row.querySelectorAll('.d')].filter(d => { const i = d.querySelector('[data-d]'); return !i.value && i !== document.activeElement; });
+    if (!empty.length) return;
+    empty.forEach(d => d.remove());
+    row.querySelectorAll('.d').forEach((d, i) => { d.querySelector('[data-d]').dataset.d = d.querySelector('[data-deld]').dataset.deld = i; });
+    blocks.find(b => b.id === +row.dataset.id).details = [...row.querySelectorAll('[data-d]')].map(i => i.value);
+  });
+}
+document.addEventListener('pointerdown', () => pressed = true, true);
+for (const t of ['pointerup', 'pointercancel']) document.addEventListener(t, () => { pressed = false; setTimeout(sweep); }, true);
+list.addEventListener('focusout', e => { if (e.target.dataset.d !== undefined) setTimeout(sweep); });
+
 function addDetail(b) {
   (b.details ||= []).push('');
   renderList(); save();
@@ -304,7 +321,7 @@ $('#delt').onclick = () => {
 // ---- 파일로 저장 / 불러오기 (.json, 모든 시간표) ----
 $('#exp').onclick = () => {
   sync(); dirty = false;
-  const data = {app: 'timetable', version: 1, tables: store.tables.map(t => ({name: t.name, blocks: t.blocks.map(({id, ...b}) => b)}))};
+  const data = {app: 'timetable', version: 1, tables: store.tables.map(t => ({name: t.name, blocks: t.blocks.map(({id, ...b}) => b.details ? {...b, details: b.details.filter(d => d !== '')} : b)}))};
   const text = JSON.stringify(data, null, 2), name = `timetables-${new Date().toLocaleDateString('sv-SE')}.json`;
   // 일반 다운로드. 브라우저가 조용히 다운로드 폴더에 저장하므로 안내 문구를 띄움
   // (showSaveFilePicker 는 앱 내장 브라우저에서 곧바로 AbortError 가 나서 취소와 구분이 안 돼 쓰지 않음)
