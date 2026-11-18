@@ -1,0 +1,5 @@
+{"app":"timetable","version":1,"tables":[{"name":"T4","blocks":[
+ {"name":"A저녁","color":"#d9ccf5","start":1200,"end":1380},
+ {"name":"B밤","color":"#ffe8b8","start":1380,"end":360},
+ {"name":"C낮","color":"#bfe6f5","start":480,"end":600}
+]}]}

@@ -1,0 +1,5 @@
+{"app":"timetable","version":1,"tables":[{"name":"T3","blocks":[
+ {"name":"새벽","color":"#d9ccf5","start":180,"end":300},
+ {"name":"오전","color":"#ffe8b8","start":480,"end":540},
+ {"name":"밤","color":"#bfe6f5","start":1380,"end":90}
+]}]}

@@ -1,0 +1,58 @@
+Snapshots whose visual row order differs from the start-time order, per scenario (bad/total).
+scenario | before | cand-A1 | cand-A2 | cand-B | after
+S0 initial layout (rects of first row, last row, #add) | 0/1 | 0/1 | 0/1 | 0/1 | 0/1
+S1a default: 잠 start hour ArrowUp x3 (22:30 -> ?) | 2/4 | 0/4 | 0/4 | 0/4 | 0/4
+S1b T3: 밤 start hour ArrowUp (23:00 -> 00:00) then minute ArrowUp, key | 2/3 | 0/3 | 0/3 | 0/3 | 0/3
+S2 T3: 밤 start AM/PM ArrowUp, hour typed "12", then ArrowUp (acts on t | 4/6 | 0/6 | 0/6 | 0/6 | 0/6
+S3 default: drag 잠 start handle 22:30 -> 23:30 -> 00:30 -> 01:00 (real | 4/7 | 0/7 | 0/7 | 0/7 | 0/7
+S3b default: focus in 잠 name input, drag its start handle across 00:00 | 2/4 | 0/4 | 0/4 | 0/4 | 0/4
+S3c default: focus in a detail input of 잠 ("abc"), drag across 00:00,  | 2/3 | 0/3 | 0/3 | 0/3 | 0/3
+S3d T4: drag shared handle 23:00 (A저녁 end + B밤 start) to 00:30 | 3/5 | 0/5 | 0/5 | 0/5 | 0/5
+S4 default: change END only (공부 end hour ArrowDown 12:00 -> 11:00) | 0/2 | 0/2 | 0/2 | 0/2 | 0/2
+S5 default: 잠 (start 1350) sorts last; change 잠 end (07:00 -> 06:00) k | 0/2 | 0/2 | 0/2 | 0/2 | 0/2
+S6 default: rejected edit (공부 start hour ArrowDown x2 into 아침) then cl | 0/4 | 0/4 | 0/4 | 0/4 | 0/4
+S7 default: add then delete blocks | 0/3 | 0/3 | 0/3 | 0/3 | 0/3
+S7b T3: after a reorder, add a block and delete another (renderList re | 1/4 | 0/4 | 0/4 | 0/4 | 0/4
+S8 T3: detail "keepme" typed in 새벽, then 밤 start edit reorders; detail | 1/2 | 0/2 | 0/2 | 0/2 | 0/2
+S9 T3: Tab order after the 밤 row moves to the top | 1/1 | 0/1 | 0/1 | 0/1 | 0/1
+S10 default: clear start box (3 segments) then click elsewhere restore | 0/2 | 0/2 | 0/2 | 0/2 | 0/2
+S10b T3: after a reorder, clear 새벽 start box then click elsewhere rest | 0/2 | 0/2 | 0/2 | 0/2 | 0/2
+S11 default: empty detail line is swept after click elsewhere (#5) | 0/2 | 0/2 | 0/2 | 0/2 | 0/2
+S11b T3: empty detail line in 새벽 focused while 밤 start is reordered by | 1/2 | 0/2 | 0/2 | 0/2 | 0/2
+S12 default: non-reordering time edit mutates how much DOM? (공부 start  | 0/1 | 0/1 | 0/1 | 0/1 | 0/1
+S13 default: cost of the one keystroke that crosses 00:00 (잠 start 23: | 1/1 | 0/1 | 0/1 | 0/1 | 0/1
+
+Typed value in the 밤 start box (S2), expected 11:00 -> 01:00 -> 00:00 -> 00:10, and S8 final value (expected 00:00).
+before: S2 11:00 -> 01:00 -> 00:00 -> 00:10 | S8 00:00
+cand-A1: S2 11:00 -> 01:00 -> 13:00 -> 01:00 | S8 13:00
+cand-A2: S2 11:00 -> 01:00 -> 00:00 -> 00:10 | S8 00:00
+cand-B: S2 11:00 -> 01:00 -> 00:00 -> 00:10 | S8 00:00
+after: S2 11:00 -> 01:00 -> 00:00 -> 00:10 | S8 00:00
+
+S9 Tab order after 밤 moved to the top (visual order 밤, 새벽, 오전).
+before: Tab from 밤/name: 밤/name 밤/start 밤/end 밤/del 밤/addd add tables tname ... | Shift+Tab from 새벽/name: 새벽/name 새벽/color imp exp
+cand-A1: Tab from 밤/name: 밤/name 밤/start 밤/end 밤/del 밤/addd 새벽/color 새벽/name 새벽/start ... | Shift+Tab from 새벽/name: 새벽/name 새벽/color 밤/del 밤/end
+cand-A2: Tab from 밤/name: 밤/name 밤/start 밤/end 밤/del 밤/addd 새벽/color 새벽/name 새벽/start ... | Shift+Tab from 새벽/name: 새벽/name 새벽/color 밤/del 밤/end
+cand-B: Tab from 밤/name: 밤/name 밤/start 밤/end 밤/del 밤/addd add tables tname ... | Shift+Tab from 새벽/name: 새벽/name 새벽/color imp exp
+after: Tab from 밤/name: 밤/name 밤/start 밤/end 밤/del 밤/addd add tables tname ... | Shift+Tab from 새벽/name: 새벽/name 새벽/color imp exp
+
+S13 the keystroke that crosses 00:00: DOM mutations and focus events.
+before: {"childList":0,"attributes":0} events=change:start focus=잠 / start
+cand-A1: {"childList":2,"attributes":0} events=change:start focusout:start focusin:start focus=잠 / start
+cand-A2: {"childList":2,"attributes":0} events=change:start focus=잠 / start
+cand-B: {"childList":0,"attributes":6} events=change:start focus=잠 / start
+after: {"childList":0,"attributes":6} events=change:start focus=잠 / start
+
+S12 a time edit that does not reorder: DOM mutations.
+before: {"childList":0,"attributes":0}
+cand-A1: {"childList":0,"attributes":0}
+cand-A2: {"childList":0,"attributes":0}
+cand-B: {"childList":0,"attributes":6}
+after: {"childList":0,"attributes":6}
+
+S0 layout rects [x, y, w, h].
+before: {"first":[502,134.8,460,49],"last":[502,409.8,460,49],"add":[502,464.8,460,39],"list":[502,134.8,460,324]}
+cand-A1: {"first":[502,134.8,460,49],"last":[502,409.8,460,49],"add":[502,464.8,460,39],"list":[502,134.8,460,324]}
+cand-A2: {"first":[502,134.8,460,49],"last":[502,409.8,460,49],"add":[502,464.8,460,39],"list":[502,134.8,460,324]}
+cand-B: {"first":[502,134.8,460,49],"last":[502,409.8,460,49],"add":[502,464.8,460,39],"list":[502,134.8,460,330]}
+after: {"first":[502,134.8,460,49],"last":[502,409.8,460,49],"add":[502,464.8,460,39],"list":[502,134.8,460,330]}

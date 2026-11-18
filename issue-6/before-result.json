@@ -1,0 +1,1603 @@
+{
+  "url": "file://.../main.html",
+  "locale": {
+    "lang": "ko-KR",
+    "hour12": true
+  },
+  "scenarios": {
+    "S0 initial layout (rects of first row, last row, #add)": {
+      "snap": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "아침,공부,점심,놀기,저녁,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "rects": {
+        "first": [
+          502,
+          134.8,
+          460,
+          49
+        ],
+        "last": [
+          502,
+          409.8,
+          460,
+          49
+        ],
+        "add": [
+          502,
+          464.8,
+          460,
+          39
+        ],
+        "list": [
+          502,
+          134.8,
+          460,
+          324
+        ]
+      },
+      "exceptions": []
+    },
+    "S1a default: 잠 start hour ArrowUp x3 (22:30 -> ?)": {
+      "steps": [
+        {
+          "before": {
+            "visual": "아침,공부,점심,놀기,저녁,잠",
+            "dom": "아침,공부,점심,놀기,저녁,잠",
+            "expected": "아침,공부,점심,놀기,저녁,잠",
+            "visualMatchesStartOrder": true,
+            "starts": {
+              "잠": "22:30",
+              "아침": "07:00",
+              "공부": "09:00",
+              "점심": "12:00",
+              "놀기": "14:00",
+              "저녁": "18:00"
+            },
+            "timeBoxes": {
+              "아침": "07:00~08:00",
+              "공부": "09:00~12:00",
+              "점심": "12:00~13:00",
+              "놀기": "14:00~17:00",
+              "저녁": "18:00~19:00",
+              "잠": "22:30~07:00"
+            },
+            "focus": "잠 / start",
+            "sameFocusedNode": true,
+            "msg": ""
+          }
+        },
+        {
+          "i": 1,
+          "visual": "아침,공부,점심,놀기,저녁,잠",
+          "dom": "아침,공부,점심,놀기,저녁,잠",
+          "expected": "아침,공부,점심,놀기,저녁,잠",
+          "visualMatchesStartOrder": true,
+          "starts": {
+            "잠": "23:30",
+            "아침": "07:00",
+            "공부": "09:00",
+            "점심": "12:00",
+            "놀기": "14:00",
+            "저녁": "18:00"
+          },
+          "timeBoxes": {
+            "아침": "07:00~08:00",
+            "공부": "09:00~12:00",
+            "점심": "12:00~13:00",
+            "놀기": "14:00~17:00",
+            "저녁": "18:00~19:00",
+            "잠": "23:30~07:00"
+          },
+          "focus": "잠 / start",
+          "sameFocusedNode": true,
+          "msg": "",
+          "events": "focusin:start change:start"
+        },
+        {
+          "i": 2,
+          "visual": "아침,공부,점심,놀기,저녁,잠",
+          "dom": "아침,공부,점심,놀기,저녁,잠",
+          "expected": "잠,아침,공부,점심,놀기,저녁",
+          "visualMatchesStartOrder": false,
+          "starts": {
+            "잠": "00:30",
+            "아침": "07:00",
+            "공부": "09:00",
+            "점심": "12:00",
+            "놀기": "14:00",
+            "저녁": "18:00"
+          },
+          "timeBoxes": {
+            "아침": "07:00~08:00",
+            "공부": "09:00~12:00",
+            "점심": "12:00~13:00",
+            "놀기": "14:00~17:00",
+            "저녁": "18:00~19:00",
+            "잠": "00:30~07:00"
+          },
+          "focus": "잠 / start",
+          "sameFocusedNode": true,
+          "msg": "",
+          "events": "change:start"
+        },
+        {
+          "i": 3,
+          "visual": "아침,공부,점심,놀기,저녁,잠",
+          "dom": "아침,공부,점심,놀기,저녁,잠",
+          "expected": "잠,아침,공부,점심,놀기,저녁",
+          "visualMatchesStartOrder": false,
+          "starts": {
+            "잠": "01:30",
+            "아침": "07:00",
+            "공부": "09:00",
+            "점심": "12:00",
+            "놀기": "14:00",
+            "저녁": "18:00"
+          },
+          "timeBoxes": {
+            "아침": "07:00~08:00",
+            "공부": "09:00~12:00",
+            "점심": "12:00~13:00",
+            "놀기": "14:00~17:00",
+            "저녁": "18:00~19:00",
+            "잠": "01:30~07:00"
+          },
+          "focus": "잠 / start",
+          "sameFocusedNode": true,
+          "msg": "",
+          "events": "change:start"
+        }
+      ],
+      "exceptions": []
+    },
+    "S1b T3: 밤 start hour ArrowUp (23:00 -> 00:00) then minute ArrowUp, keys on segments": {
+      "before": {
+        "visual": "새벽,오전,밤",
+        "dom": "새벽,오전,밤",
+        "expected": "새벽,오전,밤",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "새벽": "03:00",
+          "오전": "08:00",
+          "밤": "23:00"
+        },
+        "timeBoxes": {
+          "새벽": "03:00~05:00",
+          "오전": "08:00~09:00",
+          "밤": "23:00~01:30"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "afterHour": {
+        "visual": "새벽,오전,밤",
+        "dom": "새벽,오전,밤",
+        "expected": "밤,새벽,오전",
+        "visualMatchesStartOrder": false,
+        "starts": {
+          "새벽": "03:00",
+          "오전": "08:00",
+          "밤": "00:00"
+        },
+        "timeBoxes": {
+          "새벽": "03:00~05:00",
+          "오전": "08:00~09:00",
+          "밤": "00:00~01:30"
+        },
+        "focus": "밤 / start",
+        "sameFocusedNode": true,
+        "msg": "",
+        "events": "change:start"
+      },
+      "afterMinuteUp": {
+        "visual": "새벽,오전,밤",
+        "dom": "새벽,오전,밤",
+        "expected": "밤,새벽,오전",
+        "visualMatchesStartOrder": false,
+        "starts": {
+          "새벽": "03:00",
+          "오전": "08:00",
+          "밤": "00:10"
+        },
+        "timeBoxes": {
+          "새벽": "03:00~05:00",
+          "오전": "08:00~09:00",
+          "밤": "00:10~01:30"
+        },
+        "focus": "밤 / start",
+        "sameFocusedNode": true,
+        "msg": "",
+        "events": "change:start"
+      },
+      "exceptions": []
+    },
+    "S2 T3: 밤 start AM/PM ArrowUp, hour typed \"12\", then ArrowUp (acts on the minute segment if focus stayed there)": {
+      "before": {
+        "visual": "새벽,오전,밤",
+        "dom": "새벽,오전,밤",
+        "expected": "새벽,오전,밤",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "새벽": "03:00",
+          "오전": "08:00",
+          "밤": "23:00"
+        },
+        "timeBoxes": {
+          "새벽": "03:00~05:00",
+          "오전": "08:00~09:00",
+          "밤": "23:00~01:30"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "afterAmPm": {
+        "visual": "새벽,오전,밤",
+        "dom": "새벽,오전,밤",
+        "expected": "새벽,오전,밤",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "새벽": "03:00",
+          "오전": "08:00",
+          "밤": "11:00"
+        },
+        "timeBoxes": {
+          "새벽": "03:00~05:00",
+          "오전": "08:00~09:00",
+          "밤": "11:00~01:30"
+        },
+        "focus": "밤 / start",
+        "sameFocusedNode": true,
+        "msg": "",
+        "events": "change:start"
+      },
+      "afterDigit1": {
+        "visual": "새벽,오전,밤",
+        "dom": "새벽,오전,밤",
+        "expected": "밤,새벽,오전",
+        "visualMatchesStartOrder": false,
+        "starts": {
+          "새벽": "03:00",
+          "오전": "08:00",
+          "밤": "01:00"
+        },
+        "timeBoxes": {
+          "새벽": "03:00~05:00",
+          "오전": "08:00~09:00",
+          "밤": "01:00~01:30"
+        },
+        "focus": "밤 / start",
+        "sameFocusedNode": true,
+        "msg": "",
+        "events": "change:start"
+      },
+      "afterDigit2": {
+        "visual": "새벽,오전,밤",
+        "dom": "새벽,오전,밤",
+        "expected": "밤,새벽,오전",
+        "visualMatchesStartOrder": false,
+        "starts": {
+          "새벽": "03:00",
+          "오전": "08:00",
+          "밤": "00:00"
+        },
+        "timeBoxes": {
+          "새벽": "03:00~05:00",
+          "오전": "08:00~09:00",
+          "밤": "00:00~01:30"
+        },
+        "focus": "밤 / start",
+        "sameFocusedNode": true,
+        "msg": "",
+        "events": "change:start"
+      },
+      "afterMinuteArrowUp": {
+        "visual": "새벽,오전,밤",
+        "dom": "새벽,오전,밤",
+        "expected": "밤,새벽,오전",
+        "visualMatchesStartOrder": false,
+        "starts": {
+          "새벽": "03:00",
+          "오전": "08:00",
+          "밤": "00:10"
+        },
+        "timeBoxes": {
+          "새벽": "03:00~05:00",
+          "오전": "08:00~09:00",
+          "밤": "00:10~01:30"
+        },
+        "focus": "밤 / start",
+        "sameFocusedNode": true,
+        "msg": "",
+        "events": "change:start"
+      },
+      "afterBlur": {
+        "visual": "새벽,오전,밤",
+        "dom": "새벽,오전,밤",
+        "expected": "밤,새벽,오전",
+        "visualMatchesStartOrder": false,
+        "starts": {
+          "새벽": "03:00",
+          "오전": "08:00",
+          "밤": "00:10"
+        },
+        "timeBoxes": {
+          "새벽": "03:00~05:00",
+          "오전": "08:00~09:00",
+          "밤": "00:10~01:30"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "expectedFinalValue": "00:10",
+      "exceptions": []
+    },
+    "S3 default: drag 잠 start handle 22:30 -> 23:30 -> 00:30 -> 01:00 (real mouse moves)": {
+      "before": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "아침,공부,점심,놀기,저녁,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "moves": [
+        {
+          "to": "23:00",
+          "visual": "아침,공부,점심,놀기,저녁,잠",
+          "dom": "아침,공부,점심,놀기,저녁,잠",
+          "expected": "아침,공부,점심,놀기,저녁,잠",
+          "visualMatchesStartOrder": true,
+          "starts": {
+            "잠": "23:00",
+            "아침": "07:00",
+            "공부": "09:00",
+            "점심": "12:00",
+            "놀기": "14:00",
+            "저녁": "18:00"
+          },
+          "timeBoxes": {
+            "아침": "07:00~08:00",
+            "공부": "09:00~12:00",
+            "점심": "12:00~13:00",
+            "놀기": "14:00~17:00",
+            "저녁": "18:00~19:00",
+            "잠": "23:00~07:00"
+          },
+          "focus": "BODY",
+          "sameFocusedNode": false,
+          "msg": ""
+        },
+        {
+          "to": "23:30",
+          "visual": "아침,공부,점심,놀기,저녁,잠",
+          "dom": "아침,공부,점심,놀기,저녁,잠",
+          "expected": "아침,공부,점심,놀기,저녁,잠",
+          "visualMatchesStartOrder": true,
+          "starts": {
+            "잠": "23:30",
+            "아침": "07:00",
+            "공부": "09:00",
+            "점심": "12:00",
+            "놀기": "14:00",
+            "저녁": "18:00"
+          },
+          "timeBoxes": {
+            "아침": "07:00~08:00",
+            "공부": "09:00~12:00",
+            "점심": "12:00~13:00",
+            "놀기": "14:00~17:00",
+            "저녁": "18:00~19:00",
+            "잠": "23:30~07:00"
+          },
+          "focus": "BODY",
+          "sameFocusedNode": false,
+          "msg": ""
+        },
+        {
+          "to": "00:00",
+          "visual": "아침,공부,점심,놀기,저녁,잠",
+          "dom": "아침,공부,점심,놀기,저녁,잠",
+          "expected": "잠,아침,공부,점심,놀기,저녁",
+          "visualMatchesStartOrder": false,
+          "starts": {
+            "잠": "00:00",
+            "아침": "07:00",
+            "공부": "09:00",
+            "점심": "12:00",
+            "놀기": "14:00",
+            "저녁": "18:00"
+          },
+          "timeBoxes": {
+            "아침": "07:00~08:00",
+            "공부": "09:00~12:00",
+            "점심": "12:00~13:00",
+            "놀기": "14:00~17:00",
+            "저녁": "18:00~19:00",
+            "잠": "00:00~07:00"
+          },
+          "focus": "BODY",
+          "sameFocusedNode": false,
+          "msg": ""
+        },
+        {
+          "to": "00:30",
+          "visual": "아침,공부,점심,놀기,저녁,잠",
+          "dom": "아침,공부,점심,놀기,저녁,잠",
+          "expected": "잠,아침,공부,점심,놀기,저녁",
+          "visualMatchesStartOrder": false,
+          "starts": {
+            "잠": "00:30",
+            "아침": "07:00",
+            "공부": "09:00",
+            "점심": "12:00",
+            "놀기": "14:00",
+            "저녁": "18:00"
+          },
+          "timeBoxes": {
+            "아침": "07:00~08:00",
+            "공부": "09:00~12:00",
+            "점심": "12:00~13:00",
+            "놀기": "14:00~17:00",
+            "저녁": "18:00~19:00",
+            "잠": "00:30~07:00"
+          },
+          "focus": "BODY",
+          "sameFocusedNode": false,
+          "msg": ""
+        },
+        {
+          "to": "01:00",
+          "visual": "아침,공부,점심,놀기,저녁,잠",
+          "dom": "아침,공부,점심,놀기,저녁,잠",
+          "expected": "잠,아침,공부,점심,놀기,저녁",
+          "visualMatchesStartOrder": false,
+          "starts": {
+            "잠": "01:00",
+            "아침": "07:00",
+            "공부": "09:00",
+            "점심": "12:00",
+            "놀기": "14:00",
+            "저녁": "18:00"
+          },
+          "timeBoxes": {
+            "아침": "07:00~08:00",
+            "공부": "09:00~12:00",
+            "점심": "12:00~13:00",
+            "놀기": "14:00~17:00",
+            "저녁": "18:00~19:00",
+            "잠": "01:00~07:00"
+          },
+          "focus": "BODY",
+          "sameFocusedNode": false,
+          "msg": ""
+        }
+      ],
+      "afterRelease": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "잠,아침,공부,점심,놀기,저녁",
+        "visualMatchesStartOrder": false,
+        "starts": {
+          "잠": "01:00",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "01:00~07:00"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "exceptions": []
+    },
+    "S3b default: focus in 잠 name input, drag its start handle across 00:00": {
+      "before": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "아침,공부,점심,놀기,저녁,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "잠 / name",
+        "sameFocusedNode": true,
+        "msg": ""
+      },
+      "afterPress": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "아침,공부,점심,놀기,저녁,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "잠 / name",
+        "sameFocusedNode": true,
+        "msg": "",
+        "events": ""
+      },
+      "afterDrag": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "잠,아침,공부,점심,놀기,저녁",
+        "visualMatchesStartOrder": false,
+        "starts": {
+          "잠": "00:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "00:30~07:00"
+        },
+        "focus": "잠 / name",
+        "sameFocusedNode": true,
+        "msg": "",
+        "events": ""
+      },
+      "afterTypingX": {
+        "visual": "아침,공부,점심,놀기,저녁,잠X",
+        "dom": "아침,공부,점심,놀기,저녁,잠X",
+        "expected": "잠X,아침,공부,점심,놀기,저녁",
+        "visualMatchesStartOrder": false,
+        "starts": {
+          "잠X": "00:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠X": "00:30~07:00"
+        },
+        "focus": "잠X / name",
+        "sameFocusedNode": true,
+        "msg": "",
+        "name1": "잠X"
+      },
+      "exceptions": []
+    },
+    "S3c default: focus in a detail input of 잠 (\"abc\"), drag across 00:00, then type \"d\"": {
+      "before": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "아침,공부,점심,놀기,저녁,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "잠 / detail#0 \"abc\"",
+        "sameFocusedNode": true,
+        "msg": ""
+      },
+      "afterDrag": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "잠,아침,공부,점심,놀기,저녁",
+        "visualMatchesStartOrder": false,
+        "starts": {
+          "잠": "00:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "00:30~07:00"
+        },
+        "focus": "잠 / detail#0 \"abc\"",
+        "sameFocusedNode": true,
+        "msg": "",
+        "events": ""
+      },
+      "afterTypingD": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "잠,아침,공부,점심,놀기,저녁",
+        "visualMatchesStartOrder": false,
+        "starts": {
+          "잠": "00:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "00:30~07:00"
+        },
+        "focus": "잠 / detail#0 \"abcd\"",
+        "sameFocusedNode": true,
+        "msg": ""
+      },
+      "details": [
+        "abcd"
+      ],
+      "exceptions": []
+    },
+    "S3d T4: drag shared handle 23:00 (A저녁 end + B밤 start) to 00:30": {
+      "before": {
+        "visual": "C낮,A저녁,B밤",
+        "dom": "C낮,A저녁,B밤",
+        "expected": "C낮,A저녁,B밤",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "A저녁": "20:00",
+          "B밤": "23:00",
+          "C낮": "08:00"
+        },
+        "timeBoxes": {
+          "C낮": "08:00~10:00",
+          "A저녁": "20:00~23:00",
+          "B밤": "23:00~06:00"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "moves": [
+        {
+          "to": "23:30",
+          "visual": "C낮,A저녁,B밤",
+          "dom": "C낮,A저녁,B밤",
+          "expected": "C낮,A저녁,B밤",
+          "visualMatchesStartOrder": true,
+          "starts": {
+            "A저녁": "20:00",
+            "B밤": "23:30",
+            "C낮": "08:00"
+          },
+          "timeBoxes": {
+            "C낮": "08:00~10:00",
+            "A저녁": "20:00~23:30",
+            "B밤": "23:30~06:00"
+          },
+          "focus": "BODY",
+          "sameFocusedNode": false,
+          "msg": ""
+        },
+        {
+          "to": "00:00",
+          "visual": "C낮,A저녁,B밤",
+          "dom": "C낮,A저녁,B밤",
+          "expected": "B밤,C낮,A저녁",
+          "visualMatchesStartOrder": false,
+          "starts": {
+            "A저녁": "20:00",
+            "B밤": "00:00",
+            "C낮": "08:00"
+          },
+          "timeBoxes": {
+            "C낮": "08:00~10:00",
+            "A저녁": "20:00~00:00",
+            "B밤": "00:00~06:00"
+          },
+          "focus": "BODY",
+          "sameFocusedNode": false,
+          "msg": ""
+        },
+        {
+          "to": "00:30",
+          "visual": "C낮,A저녁,B밤",
+          "dom": "C낮,A저녁,B밤",
+          "expected": "B밤,C낮,A저녁",
+          "visualMatchesStartOrder": false,
+          "starts": {
+            "A저녁": "20:00",
+            "B밤": "00:30",
+            "C낮": "08:00"
+          },
+          "timeBoxes": {
+            "C낮": "08:00~10:00",
+            "A저녁": "20:00~00:30",
+            "B밤": "00:30~06:00"
+          },
+          "focus": "BODY",
+          "sameFocusedNode": false,
+          "msg": ""
+        }
+      ],
+      "afterRelease": {
+        "visual": "C낮,A저녁,B밤",
+        "dom": "C낮,A저녁,B밤",
+        "expected": "B밤,C낮,A저녁",
+        "visualMatchesStartOrder": false,
+        "starts": {
+          "A저녁": "20:00",
+          "B밤": "00:30",
+          "C낮": "08:00"
+        },
+        "timeBoxes": {
+          "C낮": "08:00~10:00",
+          "A저녁": "20:00~00:30",
+          "B밤": "00:30~06:00"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "exceptions": []
+    },
+    "S4 default: change END only (공부 end hour ArrowDown 12:00 -> 11:00)": {
+      "before": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "아침,공부,점심,놀기,저녁,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "after": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "아침,공부,점심,놀기,저녁,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~11:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "공부 / end",
+        "sameFocusedNode": true,
+        "msg": ""
+      },
+      "exceptions": []
+    },
+    "S5 default: 잠 (start 1350) sorts last; change 잠 end (07:00 -> 06:00) keeps it last": {
+      "before": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "아침,공부,점심,놀기,저녁,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "after": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "아침,공부,점심,놀기,저녁,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "22:30~06:00"
+        },
+        "focus": "잠 / end",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "exceptions": []
+    },
+    "S6 default: rejected edit (공부 start hour ArrowDown x2 into 아침) then click elsewhere": {
+      "before": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "아침,공부,점심,놀기,저녁,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "afterFirstDown": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "아침,공부,점심,놀기,저녁,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "08:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "08:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "공부 / start",
+        "sameFocusedNode": true,
+        "msg": ""
+      },
+      "afterRejected": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "아침,공부,점심,놀기,저녁,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "08:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "08:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "공부 / start",
+        "sameFocusedNode": true,
+        "msg": "그 시간으로는 바꿀 수 없어요 (옆 일정이 10분보다 짧아지거나 시간이 너무 짧아요)"
+      },
+      "afterBlur": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "아침,공부,점심,놀기,저녁,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "08:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "08:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": "그 시간으로는 바꿀 수 없어요 (옆 일정이 10분보다 짧아지거나 시간이 너무 짧아요)"
+      },
+      "exceptions": []
+    },
+    "S7 default: add then delete blocks": {
+      "before": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "아침,공부,점심,놀기,저녁,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "afterAdd": {
+        "visual": "아침,공부,점심,놀기,저녁,새 일정,잠",
+        "dom": "아침,공부,점심,놀기,저녁,새 일정,잠",
+        "expected": "아침,공부,점심,놀기,저녁,새 일정,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00",
+          "새 일정": "19:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "새 일정": "19:00~20:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "새 일정 / name",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "afterDelete": {
+        "visual": "아침,점심,놀기,저녁,새 일정,잠",
+        "dom": "아침,점심,놀기,저녁,새 일정,잠",
+        "expected": "아침,점심,놀기,저녁,새 일정,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00",
+          "새 일정": "19:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "새 일정": "19:00~20:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "exceptions": []
+    },
+    "S7b T3: after a reorder, add a block and delete another (renderList rebuild must still sort)": {
+      "afterReorder": {
+        "visual": "새벽,오전,밤",
+        "dom": "새벽,오전,밤",
+        "expected": "밤,새벽,오전",
+        "visualMatchesStartOrder": false,
+        "starts": {
+          "새벽": "03:00",
+          "오전": "08:00",
+          "밤": "00:00"
+        },
+        "timeBoxes": {
+          "새벽": "03:00~05:00",
+          "오전": "08:00~09:00",
+          "밤": "00:00~01:30"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "afterAdd": {
+        "visual": "밤,새벽,오전,새 일정",
+        "dom": "밤,새벽,오전,새 일정",
+        "expected": "밤,새벽,오전,새 일정",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "새벽": "03:00",
+          "오전": "08:00",
+          "밤": "00:00",
+          "새 일정": "09:00"
+        },
+        "timeBoxes": {
+          "밤": "00:00~01:30",
+          "새벽": "03:00~05:00",
+          "오전": "08:00~09:00",
+          "새 일정": "09:00~10:00"
+        },
+        "focus": "새 일정 / name",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "afterDelete": {
+        "visual": "밤,새벽,새 일정",
+        "dom": "밤,새벽,새 일정",
+        "expected": "밤,새벽,새 일정",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "새벽": "03:00",
+          "밤": "00:00",
+          "새 일정": "09:00"
+        },
+        "timeBoxes": {
+          "밤": "00:00~01:30",
+          "새벽": "03:00~05:00",
+          "새 일정": "09:00~10:00"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "afterCopyTable": {
+        "visual": "밤,새벽,새 일정",
+        "dom": "밤,새벽,새 일정",
+        "expected": "밤,새벽,새 일정",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "새벽": "03:00",
+          "밤": "00:00",
+          "새 일정": "09:00"
+        },
+        "timeBoxes": {
+          "밤": "00:00~01:30",
+          "새벽": "03:00~05:00",
+          "새 일정": "09:00~10:00"
+        },
+        "focus": "BUTTON",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "exceptions": []
+    },
+    "S8 T3: detail \"keepme\" typed in 새벽, then 밤 start edit reorders; details intact": {
+      "before": {
+        "visual": "새벽,오전,밤",
+        "dom": "새벽,오전,밤",
+        "expected": "새벽,오전,밤",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "새벽": "03:00",
+          "오전": "08:00",
+          "밤": "23:00"
+        },
+        "timeBoxes": {
+          "새벽": "03:00~05:00",
+          "오전": "08:00~09:00",
+          "밤": "23:00~01:30"
+        },
+        "focus": "오전 / detail#0 \"also\"",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "after": {
+        "visual": "새벽,오전,밤",
+        "dom": "새벽,오전,밤",
+        "expected": "밤,새벽,오전",
+        "visualMatchesStartOrder": false,
+        "starts": {
+          "새벽": "03:00",
+          "오전": "08:00",
+          "밤": "00:00"
+        },
+        "timeBoxes": {
+          "새벽": "03:00~05:00",
+          "오전": "08:00~09:00",
+          "밤": "00:00~01:30"
+        },
+        "focus": "밤 / start",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "details": [
+        [
+          "새벽",
+          [
+            "keepme"
+          ]
+        ],
+        [
+          "오전",
+          [
+            "also"
+          ]
+        ],
+        [
+          "밤",
+          []
+        ]
+      ],
+      "detailInputs": [
+        [
+          "새벽",
+          [
+            "keepme"
+          ]
+        ],
+        [
+          "오전",
+          [
+            "also"
+          ]
+        ],
+        [
+          "밤",
+          []
+        ]
+      ],
+      "exceptions": []
+    },
+    "S9 T3: Tab order after the 밤 row moves to the top": {
+      "afterReorder": {
+        "visual": "새벽,오전,밤",
+        "dom": "새벽,오전,밤",
+        "expected": "밤,새벽,오전",
+        "visualMatchesStartOrder": false,
+        "starts": {
+          "새벽": "03:00",
+          "오전": "08:00",
+          "밤": "00:00"
+        },
+        "timeBoxes": {
+          "새벽": "03:00~05:00",
+          "오전": "08:00~09:00",
+          "밤": "00:00~01:30"
+        },
+        "focus": "밤 / start",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "tabForwardFromFirstVisualRowName": [
+        "밤/name",
+        "밤/start",
+        "밤/end",
+        "밤/del",
+        "밤/addd",
+        "add",
+        "tables",
+        "tname",
+        "newt",
+        "copyt",
+        "delt",
+        "exp",
+        "imp",
+        "새벽/color",
+        "새벽/name",
+        "새벽/start",
+        "새벽/end",
+        "새벽/del",
+        "새벽/addd",
+        "오전/color",
+        "오전/name",
+        "오전/start",
+        "오전/end"
+      ],
+      "shiftTabFromSecondVisualRowName": [
+        "새벽/name",
+        "새벽/color",
+        "imp",
+        "exp",
+        "delt",
+        "copyt",
+        "newt",
+        "tname",
+        "tables",
+        "BODY",
+        "add",
+        "밤/del",
+        "밤/end"
+      ],
+      "exceptions": []
+    },
+    "S10 default: clear start box (3 segments) then click elsewhere restores it (#3)": {
+      "whileEditing": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "아침,공부,점심,놀기,저녁,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "공부 / start",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "afterBlur": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "아침,공부,점심,놀기,저녁,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "exceptions": []
+    },
+    "S10b T3: after a reorder, clear 새벽 start box then click elsewhere restores it": {
+      "afterReorder": {
+        "visual": "새벽,오전,밤",
+        "dom": "새벽,오전,밤",
+        "expected": "새벽,오전,밤",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "새벽": "03:00",
+          "오전": "08:00",
+          "밤": "12:00"
+        },
+        "timeBoxes": {
+          "새벽": "03:00~05:00",
+          "오전": "08:00~09:00",
+          "밤": "12:00~01:30"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "afterBlur": {
+        "visual": "새벽,오전,밤",
+        "dom": "새벽,오전,밤",
+        "expected": "새벽,오전,밤",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "새벽": "03:00",
+          "오전": "08:00",
+          "밤": "12:00"
+        },
+        "timeBoxes": {
+          "새벽": "03:00~05:00",
+          "오전": "08:00~09:00",
+          "밤": "12:00~01:30"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "exceptions": []
+    },
+    "S11 default: empty detail line is swept after click elsewhere (#5)": {
+      "afterAdd": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "아침,공부,점심,놀기,저녁,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "공부 / detail#0 \"\"",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "afterBlur": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "아침,공부,점심,놀기,저녁,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "BODY",
+        "sameFocusedNode": false,
+        "msg": ""
+      },
+      "details": [],
+      "emptyLines": 0,
+      "exceptions": []
+    },
+    "S11b T3: empty detail line in 새벽 focused while 밤 start is reordered by drag": {
+      "before": {
+        "visual": "새벽,오전,밤",
+        "dom": "새벽,오전,밤",
+        "expected": "새벽,오전,밤",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "새벽": "03:00",
+          "오전": "08:00",
+          "밤": "23:00"
+        },
+        "timeBoxes": {
+          "새벽": "03:00~05:00",
+          "오전": "08:00~09:00",
+          "밤": "23:00~01:30"
+        },
+        "focus": "새벽 / detail#0 \"\"",
+        "sameFocusedNode": true,
+        "msg": ""
+      },
+      "afterDragAndSweep": {
+        "visual": "새벽,오전,밤",
+        "dom": "새벽,오전,밤",
+        "expected": "밤,새벽,오전",
+        "visualMatchesStartOrder": false,
+        "starts": {
+          "새벽": "03:00",
+          "오전": "08:00",
+          "밤": "00:30"
+        },
+        "timeBoxes": {
+          "새벽": "03:00~05:00",
+          "오전": "08:00~09:00",
+          "밤": "00:30~01:30"
+        },
+        "focus": "새벽 / detail#0 \"\"",
+        "sameFocusedNode": true,
+        "msg": ""
+      },
+      "details": [
+        ""
+      ],
+      "exceptions": []
+    },
+    "S12 default: non-reordering time edit mutates how much DOM? (공부 start hour ArrowUp)": {
+      "after": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "아침,공부,점심,놀기,저녁,잠",
+        "visualMatchesStartOrder": true,
+        "starts": {
+          "잠": "22:30",
+          "아침": "07:00",
+          "공부": "10:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "10:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "22:30~07:00"
+        },
+        "focus": "공부 / start",
+        "sameFocusedNode": true,
+        "msg": ""
+      },
+      "mutations": {
+        "childList": 0,
+        "attributes": 0
+      },
+      "exceptions": []
+    },
+    "S13 default: cost of the one keystroke that crosses 00:00 (잠 start 23:30 -> 00:30): DOM mutations and focus events": {
+      "after": {
+        "visual": "아침,공부,점심,놀기,저녁,잠",
+        "dom": "아침,공부,점심,놀기,저녁,잠",
+        "expected": "잠,아침,공부,점심,놀기,저녁",
+        "visualMatchesStartOrder": false,
+        "starts": {
+          "잠": "00:30",
+          "아침": "07:00",
+          "공부": "09:00",
+          "점심": "12:00",
+          "놀기": "14:00",
+          "저녁": "18:00"
+        },
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "공부": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "놀기": "14:00~17:00",
+          "저녁": "18:00~19:00",
+          "잠": "00:30~07:00"
+        },
+        "focus": "잠 / start",
+        "sameFocusedNode": true,
+        "msg": ""
+      },
+      "mutations": {
+        "childList": 0,
+        "attributes": 0
+      },
+      "events": "change:start",
+      "exceptions": []
+    }
+  }
+}

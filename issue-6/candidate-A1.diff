@@ -1,0 +1,22 @@
+--- main.html	2026-11-19 03:03:25
++++ A1.html	2026-11-19 03:08:39
+@@ -131,13 +131,19 @@
+ 
+ // 목록의 시간 입력칸을 현재 데이터에 맞춘다 (포커스를 잃지 않도록 다시 그리지 않음)
+ function syncTimes() {
++  const ae = document.activeElement;
+   document.querySelectorAll('.row').forEach(row => {
+     const b = blocks.find(b => b.id === +row.dataset.id);
+     for (const f of ['start', 'end']) {
+       const el = row.querySelector(`[data-f=${f}]`), v = fmt(b[f]);
+       if (el.value !== v) el.value = v;
+     }
++  });
++  [...blocks].sort((a, b) => a.start - b.start).forEach((b, i) => {
++    const row = list.querySelector(`.row[data-id="${b.id}"]`);
++    if (list.children[i] !== row) list.insertBefore(row, list.children[i]);
+   });
++  if (document.activeElement !== ae) ae.focus();
+ }
+ 
+ function slicePath(b) {
