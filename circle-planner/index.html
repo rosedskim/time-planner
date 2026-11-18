@@ -84,7 +84,6 @@ let dirty = false; // 마지막 파일 저장 이후 바뀐 게 있는지
 const $ = s => document.querySelector(s);
 const sync = () => { cur.blocks = blocks; }; // 일정 삭제 등으로 blocks 배열이 바뀌었을 수 있어 현재 시간표에 되돌려 둠
 const save = () => { sync(); dirty = true; };
-window.addEventListener('beforeunload', e => { if (dirty) e.preventDefault(); }); // 저장 안 한 채 닫기/새로고침 방지
 const fmt = m => String(m / 60 | 0).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
 const parse = t => { const [h, m] = t.split(':'); return Math.round((+h * 60 + +m) / UNIT) * UNIT % 1440; };
 const span = b => (b.end - b.start + 1440) % 1440 || 1440;
