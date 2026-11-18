@@ -1,5 +1,5 @@
 {
-  "url": "file:///private/tmp/claude-501/-Users-gimdonghyeon--claude-spares-spare-qox9X3/197781c0-c678-4495-bbe6-53c3b1ff95d8/scratchpad/issue-5/nomousedown.html",
+  "url": "file:///private/tmp/claude-501/-Users-gimdonghyeon--claude-spares-spare-qox9X3/197781c0-c678-4495-bbe6-53c3b1ff95d8/scratchpad/issue-5/nopressed.html",
   "scenarios": {
     "S1 add detail, leave empty, click elsewhere": {
       "afterAdd": {
@@ -21,6 +21,7 @@
           }
         ],
         "focus": "detail#0 value=\"\"",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "afterBlur": {
@@ -34,6 +35,7 @@
         ],
         "domLines": [],
         "focus": "BODY",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "exceptions": []
@@ -58,6 +60,7 @@
           }
         ],
         "focus": "detail#0 value=\"abc\"",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "afterBlur": {
@@ -79,6 +82,7 @@
           }
         ],
         "focus": "BODY",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "exceptions": []
@@ -103,6 +107,7 @@
           }
         ],
         "focus": "detail#0 value=\"\"",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "afterEnter2": {
@@ -124,6 +129,7 @@
           }
         ],
         "focus": "detail#0 value=\"\"",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "afterBlur": {
@@ -137,6 +143,7 @@
         ],
         "domLines": [],
         "focus": "BODY",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "exceptions": []
@@ -161,6 +168,7 @@
           }
         ],
         "focus": "detail#0 value=\"\"",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "afterClick": {
@@ -174,6 +182,7 @@
         ],
         "domLines": [],
         "focus": "addd button",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "exceptions": []
@@ -204,6 +213,7 @@
           }
         ],
         "focus": "detail#1 value=\"\"",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "afterClick": {
@@ -225,6 +235,7 @@
           }
         ],
         "focus": "addd button",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "exceptions": []
@@ -249,6 +260,7 @@
           }
         ],
         "focus": "detail#0 value=\"\"",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "afterClick": {
@@ -262,6 +274,7 @@
         ],
         "domLines": [],
         "focus": "addd button",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "exceptions": []
@@ -292,6 +305,7 @@
           }
         ],
         "focus": "detail#1 value=\"\"",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "afterClick": {
@@ -313,6 +327,7 @@
           }
         ],
         "focus": "addd button",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "exceptions": []
@@ -349,6 +364,7 @@
           }
         ],
         "focus": "detail#1 value=\"\"",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "afterClick": {
@@ -376,6 +392,7 @@
           }
         ],
         "focus": "BUTTON",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "exceptions": []
@@ -412,6 +429,7 @@
           }
         ],
         "focus": "detail#1 value=\"\"",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "afterClick": {
@@ -433,6 +451,7 @@
           }
         ],
         "focus": "BODY",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "exceptions": []
@@ -469,6 +488,7 @@
           }
         ],
         "focus": "detail#1 value=\"\"",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "afterBlur": {
@@ -496,6 +516,7 @@
           }
         ],
         "focus": "f=name",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "indexOfThreeBeforeDelete": 1,
@@ -518,6 +539,7 @@
           }
         ],
         "focus": "BODY",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "exceptions": []
@@ -542,6 +564,7 @@
           }
         ],
         "focus": "detail#0 value=\"\"",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "afterClick": {
@@ -555,6 +578,7 @@
         ],
         "domLines": [],
         "focus": "BUTTON",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "rows3Details": [],
@@ -580,6 +604,7 @@
           }
         ],
         "focus": "detail#0 value=\"\"",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "afterClick": {
@@ -593,6 +618,7 @@
         ],
         "domLines": [],
         "focus": "f=name",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "block3Details": [],
@@ -624,6 +650,7 @@
           }
         ],
         "focus": "detail#1 value=\"\"",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "afterClick": {
@@ -645,6 +672,7 @@
           }
         ],
         "focus": "BODY",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "exceptions": []
@@ -675,6 +703,7 @@
           }
         ],
         "focus": "detail#1 value=\"\"",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "afterTab": {
@@ -696,6 +725,34 @@
           }
         ],
         "focus": "BODY",
+        "focusedNodeIsMarked": false,
+        "dirty": true
+      },
+      "exceptions": []
+    },
+    "S12 empty line focused, page loses focus (window switch emulation)": {
+      "focusoutEvents": 0,
+      "hasFocus": true,
+      "afterPageBlur": {
+        "rows": 6,
+        "sel": 3,
+        "details": [
+          [
+            3,
+            [
+              ""
+            ]
+          ]
+        ],
+        "domLines": [
+          {
+            "d": "0",
+            "del": "0",
+            "v": ""
+          }
+        ],
+        "focus": "detail#0 value=\"\"",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "exceptions": []
@@ -726,6 +783,7 @@
           }
         ],
         "focus": "detail#1 value=\"\"",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "afterExport": {
@@ -747,6 +805,7 @@
           }
         ],
         "focus": "BUTTON",
+        "focusedNodeIsMarked": false,
         "dirty": false
       },
       "saved": [
@@ -809,6 +868,7 @@
         ],
         "domLines": null,
         "focus": "BODY",
+        "focusedNodeIsMarked": false,
         "dirty": false
       },
       "liveAfterExport": {
@@ -838,6 +898,7 @@
         ],
         "domLines": null,
         "focus": "BUTTON",
+        "focusedNodeIsMarked": false,
         "dirty": false
       },
       "saved": [
@@ -932,6 +993,7 @@
           }
         ],
         "focus": "detail#1 value=\"\"",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "exceptions": []
@@ -955,6 +1017,7 @@
         "details": [],
         "domLines": [],
         "focus": "f=name",
+        "focusedNodeIsMarked": false,
         "dirty": true
       },
       "exceptions": []

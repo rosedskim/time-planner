@@ -77,9 +77,11 @@ const snap = () => evalJs(`(() => {
     details: blocks.filter(b => b.details !== undefined).map(b => [b.id, b.details]),
     domLines: row ? [...row.querySelectorAll('.d')].map(d => ({ d: d.querySelector('[data-d]').dataset.d, del: d.querySelector('[data-deld]').dataset.deld, v: d.querySelector('[data-d]').value })) : null,
     focus: ae.dataset.d !== undefined ? 'detail#' + ae.dataset.d + ' value=' + JSON.stringify(ae.value) : ae.dataset.f ? 'f=' + ae.dataset.f : ae.dataset.addd !== undefined ? 'addd button' : ae.tagName,
+    focusedNodeIsMarked: !!ae.__mark,
     dirty,
   };
 })()`);
+const mark = () => evalJs(`document.activeElement.__mark = true`);
 const saved = async () => {
   await evalJs(`window.__savedPending`);
   const s = await evalJs(`window.__saved`);
@@ -115,7 +117,7 @@ S['S2 add detail, type text, click elsewhere'] = await take(async () => {
 });
 
 S['S3 Enter on empty line twice, click elsewhere'] = await take(async () => {
-  await clickSel(SEL(3)); await clickSel(ADD);
+  await clickSel(SEL(3)); await clickSel(ADD); await mark();
   await key('Enter'); const afterEnter1 = await snap();
   await key('Enter'); const afterEnter2 = await snap();
   await blur();
@@ -125,13 +127,13 @@ S['S3 Enter on empty line twice, click elsewhere'] = await take(async () => {
 for (const hold of [0, 200]) {
   S[`S4 empty line focused, click + 세부사항 (mouse hold ${hold}ms)`] = await take(async () => {
     await clickSel(SEL(3)); await clickSel(ADD);
-    const before = await snap();
+    const before = await snap(); await mark();
     await clickSel(ADD, hold);
     return { before, afterClick: await snap() };
   });
   S[`S4b non-empty line then empty line focused, click + 세부사항 (hold ${hold}ms)`] = await take(async () => {
     await clickSel(SEL(3)); await clickSel(ADD); await typeText('a'); await key('Enter');
-    const before = await snap();
+    const before = await snap(); await mark();
     await clickSel(ADD, hold);
     return { before, afterClick: await snap() };
   });
@@ -186,6 +188,17 @@ S['S11 empty line focused, press Tab to move to the next control'] = await take(
   await send('Input.dispatchKeyEvent', { type: 'rawKeyDown', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9 });
   await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9 }); await sleep(100);
   return { before, afterTab: await snap() };
+});
+
+S['S12 empty line focused, page loses focus (window switch emulation)'] = await take(async () => {
+  await clickSel(SEL(3)); await clickSel(ADD);
+  await evalJs(`window.__fo = 0; document.addEventListener('focusout', () => window.__fo++, true)`);
+  await send('Emulation.setFocusEmulationEnabled', { enabled: false });
+  await send('Target.activateTarget', { targetId: target.id }).catch(() => {});
+  await sleep(300);
+  const r = { focusoutEvents: await evalJs('window.__fo'), hasFocus: await evalJs('document.hasFocus()'), afterPageBlur: await snap() };
+  await send('Emulation.setFocusEmulationEnabled', { enabled: true });
+  return r;
 });
 
 S['S6a export clicked while an empty line is focused'] = await take(async () => {
