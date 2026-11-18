@@ -1,0 +1,673 @@
+{
+  "url": "file:///Users/gimdonghyeon/Git/rosedskim/time-planner/circle-planner/index.html",
+  "locale": {
+    "lang": "ko-KR",
+    "hour12": true
+  },
+  "scenarios": {
+    "start-clear-full-then-click-elsewhere": {
+      "before": {
+        "start": "09:00",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "whileEditing": {
+        "start": "",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "start"
+      },
+      "eventsWhileClearing": [
+        "input:start=\"\"",
+        "change:start=\"\""
+      ],
+      "afterBlur": {
+        "start": "",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "eventsOnBlur": [
+        "focusout:start=\"\""
+      ]
+    },
+    "start-clear-first-segment-then-click-elsewhere": {
+      "before": {
+        "start": "09:00",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "whileEditing": {
+        "start": "",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "start"
+      },
+      "eventsWhileClearing": [
+        "input:start=\"\"",
+        "change:start=\"\""
+      ],
+      "afterBlur": {
+        "start": "",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "eventsOnBlur": [
+        "focusout:start=\"\""
+      ]
+    },
+    "start-clear-hour-segment-then-click-elsewhere": {
+      "before": {
+        "start": "09:00",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "whileEditing": {
+        "start": "",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "start"
+      },
+      "eventsWhileClearing": [
+        "input:start=\"\"",
+        "change:start=\"\""
+      ],
+      "afterBlur": {
+        "start": "",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "eventsOnBlur": [
+        "focusout:start=\"\""
+      ]
+    },
+    "start-clear-minute-segment-then-click-elsewhere": {
+      "before": {
+        "start": "09:00",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "whileEditing": {
+        "start": "",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "start"
+      },
+      "eventsWhileClearing": [
+        "input:start=\"\"",
+        "change:start=\"\""
+      ],
+      "afterBlur": {
+        "start": "",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "eventsOnBlur": [
+        "focusout:start=\"\""
+      ]
+    },
+    "end-clear-full-then-click-elsewhere": {
+      "before": {
+        "start": "09:00",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "whileEditing": {
+        "start": "09:00",
+        "end": "",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "end"
+      },
+      "eventsWhileClearing": [
+        "input:end=\"\"",
+        "change:end=\"\""
+      ],
+      "afterBlur": {
+        "start": "09:00",
+        "end": "",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "eventsOnBlur": [
+        "focusout:end=\"\""
+      ]
+    },
+    "end-clear-first-segment-then-click-elsewhere": {
+      "before": {
+        "start": "09:00",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "whileEditing": {
+        "start": "09:00",
+        "end": "",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "end"
+      },
+      "eventsWhileClearing": [
+        "input:end=\"\"",
+        "change:end=\"\""
+      ],
+      "afterBlur": {
+        "start": "09:00",
+        "end": "",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "eventsOnBlur": [
+        "focusout:end=\"\""
+      ]
+    },
+    "end-clear-hour-segment-then-click-elsewhere": {
+      "before": {
+        "start": "09:00",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "whileEditing": {
+        "start": "09:00",
+        "end": "",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "end"
+      },
+      "eventsWhileClearing": [
+        "input:end=\"\"",
+        "change:end=\"\""
+      ],
+      "afterBlur": {
+        "start": "09:00",
+        "end": "",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "eventsOnBlur": [
+        "focusout:end=\"\""
+      ]
+    },
+    "end-clear-minute-segment-then-click-elsewhere": {
+      "before": {
+        "start": "09:00",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "whileEditing": {
+        "start": "09:00",
+        "end": "",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "end"
+      },
+      "eventsWhileClearing": [
+        "input:end=\"\"",
+        "change:end=\"\""
+      ],
+      "afterBlur": {
+        "start": "09:00",
+        "end": "",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "eventsOnBlur": [
+        "focusout:end=\"\""
+      ]
+    },
+    "end-clear-full-then-Tab-out-of-box": {
+      "before": {
+        "start": "09:00",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "tabsPressedToLeaveBox": 2,
+      "afterTab": {
+        "start": "09:00",
+        "end": "",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BUTTON"
+      },
+      "eventsOnTabOut": [
+        "focusout:end=\"\""
+      ]
+    },
+    "regression-valid-edit-start-minute-ArrowUp": {
+      "before": {
+        "start": "09:00",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "whileEditing": {
+        "start": "09:10",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          550,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,550,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "start"
+      },
+      "afterBlur": {
+        "start": "09:10",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          550,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,550,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "events": [
+        "input:start=\"09:10\"",
+        "change:start=\"09:10\"",
+        "focusout:start=\"09:10\""
+      ]
+    },
+    "regression-valid-edit-squeezes-neighbour-block2-end-hour-ArrowUp-x2": {
+      "before": {
+        "start": "09:00",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "afterBlur": {
+        "start": "10:00",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          600
+        ],
+        "block3": [
+          3,
+          600,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,600],[3,600,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "events": [
+        "input:end=\"09:00\"",
+        "change:end=\"09:00\"",
+        "input:end=\"10:00\"",
+        "change:end=\"10:00\"",
+        "focusout:end=\"10:00\""
+      ]
+    },
+    "regression-impossible-edit-start-hour-ArrowDown-x2-into-block2": {
+      "before": {
+        "start": "09:00",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          540,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,540,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "",
+        "active": "BODY"
+      },
+      "afterBlur": {
+        "start": "08:00",
+        "end": "12:00",
+        "block2": [
+          2,
+          420,
+          480
+        ],
+        "block3": [
+          3,
+          480,
+          720
+        ],
+        "allBlocks": "[[1,1350,420],[2,420,480],[3,480,720],[4,720,780],[5,840,1020],[6,1080,1140]]",
+        "msg": "그 시간으로는 바꿀 수 없어요 (옆 일정이 10분보다 짧아지거나 시간이 너무 짧아요)",
+        "active": "BODY"
+      },
+      "events": [
+        "input:start=\"08:00\"",
+        "change:start=\"08:00\"",
+        "input:start=\"07:00\"",
+        "change:start=\"07:00\"",
+        "focusout:start=\"08:00\""
+      ]
+    }
+  }
+}
