@@ -1,0 +1,79 @@
+{
+  "app": "timetable",
+  "version": 1,
+  "tables": [
+    {
+      "name": "end 1435",
+      "blocks": [
+        {
+          "name": "하루",
+          "color": "#d9ccf5",
+          "start": 0,
+          "end": 1435,
+          "details": []
+        }
+      ]
+    },
+    {
+      "name": "주말 예시",
+      "blocks": [
+        {
+          "name": "잠",
+          "color": "#d9ccf5",
+          "start": 0,
+          "end": 540,
+          "details": []
+        },
+        {
+          "name": "아침",
+          "color": "#ffe8b8",
+          "start": 540,
+          "end": 600,
+          "details": []
+        },
+        {
+          "name": "취미",
+          "color": "#f8cfe8",
+          "start": 600,
+          "end": 780,
+          "details": [
+            "그림 그리기"
+          ]
+        },
+        {
+          "name": "점심",
+          "color": "#ffd6d6",
+          "start": 780,
+          "end": 840,
+          "details": []
+        },
+        {
+          "name": "외출",
+          "color": "#d4f0c0",
+          "start": 840,
+          "end": 1080,
+          "details": [
+            "산책",
+            "장보기"
+          ]
+        },
+        {
+          "name": "저녁",
+          "color": "#fff3a8",
+          "start": 1080,
+          "end": 1140,
+          "details": []
+        },
+        {
+          "name": "휴식",
+          "color": "#bfe6f5",
+          "start": 1140,
+          "end": 0,
+          "details": [
+            "영화 보기"
+          ]
+        }
+      ]
+    }
+  ]
+}

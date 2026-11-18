@@ -1,0 +1,17 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+const ex = JSON.parse(readFileSync(process.argv[2], 'utf8'));
+const out = process.argv[3];
+const clone = o => structuredClone(o);
+const [weekday, weekend] = ex.tables;
+const w = (name, tables) => writeFileSync(`${out}/${name}.json`, JSON.stringify({ app: 'timetable', version: 1, tables }, null, 2));
+const off = t => { const c = clone(t); c.name += ' (425)'; c.blocks[1].start = 425; c.blocks[0].end = 425; return c; };
+const overlap = t => { const c = clone(t); c.name += ' (겹침)'; c.blocks[1].start = 400; return c; };
+w('A-example', ex.tables);
+w('B-one-table-425', [off(weekday)]);
+w('C-425-and-valid', [off(weekday), weekend]);
+w('D-only-425', [off(weekday)]);
+w('E-overlap-425-valid', [overlap(weekday), off(weekend), clone(weekend)]);
+w('F-end-1435', [{ name: 'end 1435', blocks: [{ name: '하루', color: '#d9ccf5', start: 0, end: 1435, details: [] }] }, clone(weekend)]);
+w('G-overlap-only', [overlap(weekday), clone(weekend)]);
+w('H-overlap-only-all', [overlap(weekday)]);
+w('I-format-and-425', [{ name: '깨짐', blocks: [{ name: 'x' }] }, off(weekday)]);

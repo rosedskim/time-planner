@@ -1,0 +1,96 @@
+{
+  "app": "timetable",
+  "version": 1,
+  "tables": [
+    {
+      "name": "깨짐",
+      "blocks": [
+        {
+          "name": "x"
+        }
+      ]
+    },
+    {
+      "name": "평일 예시 (425)",
+      "blocks": [
+        {
+          "name": "잠",
+          "color": "#d9ccf5",
+          "start": 1380,
+          "end": 425,
+          "details": []
+        },
+        {
+          "name": "아침",
+          "color": "#ffe8b8",
+          "start": 425,
+          "end": 480,
+          "details": [
+            "씻기",
+            "아침 식사"
+          ]
+        },
+        {
+          "name": "이동",
+          "color": "#cfe0c3",
+          "start": 480,
+          "end": 540,
+          "details": []
+        },
+        {
+          "name": "오전 업무",
+          "color": "#bfe6f5",
+          "start": 540,
+          "end": 720,
+          "details": [
+            "메일 확인",
+            "주요 업무 1건"
+          ]
+        },
+        {
+          "name": "점심",
+          "color": "#ffd6d6",
+          "start": 720,
+          "end": 780,
+          "details": []
+        },
+        {
+          "name": "오후 업무",
+          "color": "#bfe6f5",
+          "start": 780,
+          "end": 1080,
+          "details": [
+            "회의",
+            "문서 정리"
+          ]
+        },
+        {
+          "name": "운동",
+          "color": "#d4f0c0",
+          "start": 1080,
+          "end": 1140,
+          "details": [
+            "러닝 30분"
+          ]
+        },
+        {
+          "name": "저녁",
+          "color": "#fff3a8",
+          "start": 1140,
+          "end": 1200,
+          "details": []
+        },
+        {
+          "name": "자유 시간",
+          "color": "#f8cfe8",
+          "start": 1200,
+          "end": 1380,
+          "details": [
+            "독서",
+            "취미"
+          ]
+        }
+      ]
+    }
+  ]
+}

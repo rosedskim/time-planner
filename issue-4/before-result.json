@@ -1,0 +1,645 @@
+{
+  "A-example.json [clean]": {
+    "dialogs": [],
+    "before": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 6,
+      "dirty": false,
+      "offStepBlocks": [
+        []
+      ]
+    },
+    "after": {
+      "options": [
+        "평일 예시",
+        "주말 예시"
+      ],
+      "tname": "평일 예시",
+      "rows": 9,
+      "dirty": false,
+      "offStepBlocks": [
+        [],
+        []
+      ]
+    }
+  },
+  "A-example.json [dirty]": {
+    "dialogs": [
+      {
+        "type": "confirm",
+        "message": "저장하지 않은 변경이 있어요. 불러오면 지금 시간표 목록이 파일 내용으로 바뀌고 변경은 사라져요. 계속할까요?"
+      }
+    ],
+    "before": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 7,
+      "dirty": true,
+      "offStepBlocks": [
+        []
+      ]
+    },
+    "after": {
+      "options": [
+        "평일 예시",
+        "주말 예시"
+      ],
+      "tname": "평일 예시",
+      "rows": 9,
+      "dirty": false,
+      "offStepBlocks": [
+        [],
+        []
+      ]
+    }
+  },
+  "B-one-table-425.json [clean]": {
+    "dialogs": [],
+    "before": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 6,
+      "dirty": false,
+      "offStepBlocks": [
+        []
+      ]
+    },
+    "after": {
+      "options": [
+        "평일 예시 (425)"
+      ],
+      "tname": "평일 예시 (425)",
+      "rows": 9,
+      "dirty": false,
+      "offStepBlocks": [
+        [
+          [
+            1380,
+            425
+          ],
+          [
+            425,
+            480
+          ]
+        ]
+      ]
+    }
+  },
+  "B-one-table-425.json [dirty]": {
+    "dialogs": [
+      {
+        "type": "confirm",
+        "message": "저장하지 않은 변경이 있어요. 불러오면 지금 시간표 목록이 파일 내용으로 바뀌고 변경은 사라져요. 계속할까요?"
+      }
+    ],
+    "before": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 7,
+      "dirty": true,
+      "offStepBlocks": [
+        []
+      ]
+    },
+    "after": {
+      "options": [
+        "평일 예시 (425)"
+      ],
+      "tname": "평일 예시 (425)",
+      "rows": 9,
+      "dirty": false,
+      "offStepBlocks": [
+        [
+          [
+            1380,
+            425
+          ],
+          [
+            425,
+            480
+          ]
+        ]
+      ]
+    }
+  },
+  "C-425-and-valid.json [clean]": {
+    "dialogs": [],
+    "before": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 6,
+      "dirty": false,
+      "offStepBlocks": [
+        []
+      ]
+    },
+    "after": {
+      "options": [
+        "평일 예시 (425)",
+        "주말 예시"
+      ],
+      "tname": "평일 예시 (425)",
+      "rows": 9,
+      "dirty": false,
+      "offStepBlocks": [
+        [
+          [
+            1380,
+            425
+          ],
+          [
+            425,
+            480
+          ]
+        ],
+        []
+      ]
+    }
+  },
+  "C-425-and-valid.json [dirty]": {
+    "dialogs": [
+      {
+        "type": "confirm",
+        "message": "저장하지 않은 변경이 있어요. 불러오면 지금 시간표 목록이 파일 내용으로 바뀌고 변경은 사라져요. 계속할까요?"
+      }
+    ],
+    "before": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 7,
+      "dirty": true,
+      "offStepBlocks": [
+        []
+      ]
+    },
+    "after": {
+      "options": [
+        "평일 예시 (425)",
+        "주말 예시"
+      ],
+      "tname": "평일 예시 (425)",
+      "rows": 9,
+      "dirty": false,
+      "offStepBlocks": [
+        [
+          [
+            1380,
+            425
+          ],
+          [
+            425,
+            480
+          ]
+        ],
+        []
+      ]
+    }
+  },
+  "D-only-425.json [clean]": {
+    "dialogs": [],
+    "before": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 6,
+      "dirty": false,
+      "offStepBlocks": [
+        []
+      ]
+    },
+    "after": {
+      "options": [
+        "평일 예시 (425)"
+      ],
+      "tname": "평일 예시 (425)",
+      "rows": 9,
+      "dirty": false,
+      "offStepBlocks": [
+        [
+          [
+            1380,
+            425
+          ],
+          [
+            425,
+            480
+          ]
+        ]
+      ]
+    }
+  },
+  "D-only-425.json [dirty]": {
+    "dialogs": [
+      {
+        "type": "confirm",
+        "message": "저장하지 않은 변경이 있어요. 불러오면 지금 시간표 목록이 파일 내용으로 바뀌고 변경은 사라져요. 계속할까요?"
+      }
+    ],
+    "before": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 7,
+      "dirty": true,
+      "offStepBlocks": [
+        []
+      ]
+    },
+    "after": {
+      "options": [
+        "평일 예시 (425)"
+      ],
+      "tname": "평일 예시 (425)",
+      "rows": 9,
+      "dirty": false,
+      "offStepBlocks": [
+        [
+          [
+            1380,
+            425
+          ],
+          [
+            425,
+            480
+          ]
+        ]
+      ]
+    }
+  },
+  "E-overlap-425-valid.json [clean]": {
+    "dialogs": [
+      {
+        "type": "alert",
+        "message": "2개 불러왔어요 (형식이 맞지 않거나 일정이 겹쳐서 1개는 건너뜀)"
+      }
+    ],
+    "before": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 6,
+      "dirty": false,
+      "offStepBlocks": [
+        []
+      ]
+    },
+    "after": {
+      "options": [
+        "주말 예시 (425)",
+        "주말 예시"
+      ],
+      "tname": "주말 예시 (425)",
+      "rows": 7,
+      "dirty": false,
+      "offStepBlocks": [
+        [
+          [
+            0,
+            425
+          ],
+          [
+            425,
+            600
+          ]
+        ],
+        []
+      ]
+    }
+  },
+  "E-overlap-425-valid.json [dirty]": {
+    "dialogs": [
+      {
+        "type": "confirm",
+        "message": "저장하지 않은 변경이 있어요. 불러오면 지금 시간표 목록이 파일 내용으로 바뀌고 변경은 사라져요. 계속할까요?"
+      },
+      {
+        "type": "alert",
+        "message": "2개 불러왔어요 (형식이 맞지 않거나 일정이 겹쳐서 1개는 건너뜀)"
+      }
+    ],
+    "before": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 7,
+      "dirty": true,
+      "offStepBlocks": [
+        []
+      ]
+    },
+    "after": {
+      "options": [
+        "주말 예시 (425)",
+        "주말 예시"
+      ],
+      "tname": "주말 예시 (425)",
+      "rows": 7,
+      "dirty": false,
+      "offStepBlocks": [
+        [
+          [
+            0,
+            425
+          ],
+          [
+            425,
+            600
+          ]
+        ],
+        []
+      ]
+    }
+  },
+  "F-end-1435.json [clean]": {
+    "dialogs": [],
+    "before": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 6,
+      "dirty": false,
+      "offStepBlocks": [
+        []
+      ]
+    },
+    "after": {
+      "options": [
+        "end 1435",
+        "주말 예시"
+      ],
+      "tname": "end 1435",
+      "rows": 1,
+      "dirty": false,
+      "offStepBlocks": [
+        [
+          [
+            0,
+            1435
+          ]
+        ],
+        []
+      ]
+    }
+  },
+  "F-end-1435.json [dirty]": {
+    "dialogs": [
+      {
+        "type": "confirm",
+        "message": "저장하지 않은 변경이 있어요. 불러오면 지금 시간표 목록이 파일 내용으로 바뀌고 변경은 사라져요. 계속할까요?"
+      }
+    ],
+    "before": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 7,
+      "dirty": true,
+      "offStepBlocks": [
+        []
+      ]
+    },
+    "after": {
+      "options": [
+        "end 1435",
+        "주말 예시"
+      ],
+      "tname": "end 1435",
+      "rows": 1,
+      "dirty": false,
+      "offStepBlocks": [
+        [
+          [
+            0,
+            1435
+          ]
+        ],
+        []
+      ]
+    }
+  },
+  "G-overlap-only.json [clean]": {
+    "dialogs": [
+      {
+        "type": "alert",
+        "message": "1개 불러왔어요 (형식이 맞지 않거나 일정이 겹쳐서 1개는 건너뜀)"
+      }
+    ],
+    "before": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 6,
+      "dirty": false,
+      "offStepBlocks": [
+        []
+      ]
+    },
+    "after": {
+      "options": [
+        "주말 예시"
+      ],
+      "tname": "주말 예시",
+      "rows": 7,
+      "dirty": false,
+      "offStepBlocks": [
+        []
+      ]
+    }
+  },
+  "G-overlap-only.json [dirty]": {
+    "dialogs": [
+      {
+        "type": "confirm",
+        "message": "저장하지 않은 변경이 있어요. 불러오면 지금 시간표 목록이 파일 내용으로 바뀌고 변경은 사라져요. 계속할까요?"
+      },
+      {
+        "type": "alert",
+        "message": "1개 불러왔어요 (형식이 맞지 않거나 일정이 겹쳐서 1개는 건너뜀)"
+      }
+    ],
+    "before": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 7,
+      "dirty": true,
+      "offStepBlocks": [
+        []
+      ]
+    },
+    "after": {
+      "options": [
+        "주말 예시"
+      ],
+      "tname": "주말 예시",
+      "rows": 7,
+      "dirty": false,
+      "offStepBlocks": [
+        []
+      ]
+    }
+  },
+  "H-overlap-only-all.json [clean]": {
+    "dialogs": [
+      {
+        "type": "alert",
+        "message": "불러오기 실패: 파일에 쓸 수 있는 시간표가 없어요(비었거나 형식이 맞지 않거나 일정이 겹침). 지금 화면은 그대로 둘게요."
+      }
+    ],
+    "before": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 6,
+      "dirty": false,
+      "offStepBlocks": [
+        []
+      ]
+    },
+    "after": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 6,
+      "dirty": false,
+      "offStepBlocks": [
+        []
+      ]
+    }
+  },
+  "H-overlap-only-all.json [dirty]": {
+    "dialogs": [
+      {
+        "type": "alert",
+        "message": "불러오기 실패: 파일에 쓸 수 있는 시간표가 없어요(비었거나 형식이 맞지 않거나 일정이 겹침). 지금 화면은 그대로 둘게요."
+      }
+    ],
+    "before": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 7,
+      "dirty": true,
+      "offStepBlocks": [
+        []
+      ]
+    },
+    "after": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 7,
+      "dirty": true,
+      "offStepBlocks": [
+        []
+      ]
+    }
+  },
+  "I-format-and-425.json [clean]": {
+    "dialogs": [
+      {
+        "type": "alert",
+        "message": "1개 불러왔어요 (형식이 맞지 않거나 일정이 겹쳐서 1개는 건너뜀)"
+      }
+    ],
+    "before": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 6,
+      "dirty": false,
+      "offStepBlocks": [
+        []
+      ]
+    },
+    "after": {
+      "options": [
+        "평일 예시 (425)"
+      ],
+      "tname": "평일 예시 (425)",
+      "rows": 9,
+      "dirty": false,
+      "offStepBlocks": [
+        [
+          [
+            1380,
+            425
+          ],
+          [
+            425,
+            480
+          ]
+        ]
+      ]
+    }
+  },
+  "I-format-and-425.json [dirty]": {
+    "dialogs": [
+      {
+        "type": "confirm",
+        "message": "저장하지 않은 변경이 있어요. 불러오면 지금 시간표 목록이 파일 내용으로 바뀌고 변경은 사라져요. 계속할까요?"
+      },
+      {
+        "type": "alert",
+        "message": "1개 불러왔어요 (형식이 맞지 않거나 일정이 겹쳐서 1개는 건너뜀)"
+      }
+    ],
+    "before": {
+      "options": [
+        "내 시간표"
+      ],
+      "tname": "내 시간표",
+      "rows": 7,
+      "dirty": true,
+      "offStepBlocks": [
+        []
+      ]
+    },
+    "after": {
+      "options": [
+        "평일 예시 (425)"
+      ],
+      "tname": "평일 예시 (425)",
+      "rows": 9,
+      "dirty": false,
+      "offStepBlocks": [
+        [
+          [
+            1380,
+            425
+          ],
+          [
+            425,
+            480
+          ]
+        ]
+      ]
+    }
+  }
+}
