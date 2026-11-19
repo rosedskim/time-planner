@@ -1,0 +1,57 @@
+[
+  {
+    "title": "time-planner/README.md at d98fb71f93f7e4d01f7974d1491cadaaea59637f · rosedskim/time-planner · GitHub",
+    "anchors": [
+      {
+        "text": "https://rosedskim.github.io/time-planner/circle-planner/",
+        "href": "https://rosedskim.github.io/time-planner/circle-planner/",
+        "inTable": true
+      }
+    ],
+    "tables": [
+      {
+        "headers": [
+          "앱",
+          "설명",
+          "열기"
+        ],
+        "rows": [
+          [
+            "circle-planner",
+            "하루 24시간을 원 위에 나눠 그리는 개인 시간표",
+            "https://rosedskim.github.io/time-planner/circle-planner/"
+          ]
+        ]
+      }
+    ],
+    "h2": [
+      "앱 목록"
+    ],
+    "hasClock": false,
+    "url": "https://github.com/rosedskim/time-planner/blob/d98fb71f93f7e4d01f7974d1491cadaaea59637f/README.md",
+    "exceptions": []
+  },
+  {
+    "title": "time-planner/circle-planner/README.md at d98fb71f93f7e4d01f7974d1491cadaaea59637f · rosedskim/time-planner · GitHub",
+    "anchors": [
+      {
+        "text": "https://rosedskim.github.io/time-planner/circle-planner/",
+        "href": "https://rosedskim.github.io/time-planner/circle-planner/",
+        "inTable": false
+      }
+    ],
+    "tables": [],
+    "h2": [
+      "웹에서 바로 쓰기",
+      "주요 기능",
+      "내 PC에서 직접 실행하기",
+      "사용법",
+      "⚠️ 알아둘 점",
+      "예시 파일",
+      "파일 형식"
+    ],
+    "hasClock": false,
+    "url": "https://github.com/rosedskim/time-planner/blob/d98fb71f93f7e4d01f7974d1491cadaaea59637f/circle-planner/README.md",
+    "exceptions": []
+  }
+]
