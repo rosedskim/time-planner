@@ -1,0 +1,636 @@
+{
+  "url": "file:///Users/gimdonghyeon/Git/rosedskim/time-planner/circle-planner/index.html",
+  "locale": {
+    "lang": "ko-KR",
+    "hour12": true
+  },
+  "scenarios": {
+    "N1 now line, pill and checkbox at 09:10": {
+      "on": {
+        "hasLine": true,
+        "lineStroke": "#e5484d",
+        "pillText": "09:10",
+        "pillFill": "#d6343a",
+        "checkbox": {
+          "exists": true,
+          "checked": true,
+          "label": "현재 시각 선"
+        },
+        "dirty": false
+      },
+      "off": {
+        "hasLine": false,
+        "pillText": null,
+        "pillFill": null,
+        "checkbox": {
+          "exists": true,
+          "checked": false,
+          "label": "현재 시각 선"
+        },
+        "dirty": false
+      },
+      "on2": {
+        "hasLine": true,
+        "lineStroke": "#e5484d",
+        "pillText": "09:10",
+        "pillFill": "#d6343a",
+        "checkbox": {
+          "exists": true,
+          "checked": true,
+          "label": "현재 시각 선"
+        },
+        "dirty": false
+      },
+      "dirtyAfterToggle": false,
+      "exceptions": [],
+      "dialogs": []
+    },
+    "N2 checkbox off then reload: not remembered": {
+      "off": {
+        "exists": true,
+        "checked": false,
+        "label": "현재 시각 선"
+      },
+      "afterReload": {
+        "exists": true,
+        "checked": true,
+        "label": "현재 시각 선"
+      },
+      "hasLineAfterReload": true,
+      "exceptions": [],
+      "dialogs": []
+    },
+    "N3 saved file does not contain the checkbox state": {
+      "name": "timetables-2026-11-19.json",
+      "topKeys": [
+        "app",
+        "version",
+        "tables"
+      ],
+      "tableKeys": [
+        "name",
+        "blocks"
+      ],
+      "blockKeys": [
+        "name",
+        "color",
+        "start",
+        "end",
+        "details"
+      ],
+      "hasShowNow": false,
+      "exceptions": [],
+      "dialogs": []
+    },
+    "N4 pill text at several times (clean spot check)": {
+      "2026-11-19T10:30:00+09:00": "10:30",
+      "2026-11-19T14:20:00+09:00": "14:20",
+      "2026-11-19T00:05:00+09:00": "00:05",
+      "2026-11-19T23:59:00+09:00": "23:59",
+      "exceptions": [],
+      "dialogs": []
+    },
+    "F1 export file name uses the local date (00:30 KST = 15:30 UTC on the 18th)": {
+      "name": "timetables-2026-11-19.json",
+      "utcDate": "2026-11-18",
+      "msgAfter": "",
+      "bodyTextUnchanged": true,
+      "domCountUnchanged": true,
+      "dirtyAfter": false,
+      "exceptions": [],
+      "dialogs": []
+    },
+    "F2 saved file shape matches the README block, empty detail line is not saved": {
+      "detailsInMemoryAtSave": [
+        "메일 확인",
+        "주요 업무 1건",
+        ""
+      ],
+      "savedName": "timetables-2026-11-19.json",
+      "topKeys": [
+        "app",
+        "version",
+        "tables"
+      ],
+      "version": 1,
+      "tableCount": 2,
+      "firstBlockKeys": [
+        "name",
+        "color",
+        "start",
+        "end",
+        "details"
+      ],
+      "savedDetailsOfOfficeBlock": [
+        "메일 확인",
+        "주요 업무 1건"
+      ],
+      "anyEmptyDetailInFile": false,
+      "exceptions": [],
+      "dialogs": []
+    },
+    "L1 leaving the page with unsaved changes: no warning": {
+      "dirtyBefore": true,
+      "ev": {
+        "defaultPrevented": false,
+        "returnValue": true,
+        "onbeforeunload": "null"
+      },
+      "navigatedTo": "about:blank",
+      "exceptions": [],
+      "dialogs": []
+    },
+    "D1 empty detail line disappears on blur": {
+      "before": 2,
+      "afterAdd": {
+        "lines": 3,
+        "focusedIsDetail": "2"
+      },
+      "afterBlur": {
+        "lines": 2,
+        "mem": [
+          "메일 확인",
+          "주요 업무 1건"
+        ]
+      },
+      "exceptions": [],
+      "dialogs": []
+    },
+    "D2 Enter in a detail line adds the next line; typed-then-cleared line also disappears": {
+      "afterEnter": {
+        "lines": 3,
+        "focusedIdx": "2",
+        "focusedValue": ""
+      },
+      "typedCleared": {
+        "lines": 3,
+        "mem": [
+          "메일 확인",
+          "주요 업무 1건",
+          ""
+        ]
+      },
+      "afterBlur": {
+        "lines": 2,
+        "mem": [
+          "메일 확인",
+          "주요 업무 1건"
+        ]
+      },
+      "exceptions": [],
+      "dialogs": []
+    },
+    "R1 typing: 잠 start 23:00 -> hour ArrowUp -> 00:00, list re-sorts without blur": {
+      "before": {
+        "visual": "아침,이동,오전 업무,점심,오후 업무,운동,저녁,자유 시간,잠",
+        "expected": "아침,이동,오전 업무,점심,오후 업무,운동,저녁,자유 시간,잠",
+        "visualMatchesStartOrder": true,
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "이동": "08:00~09:00",
+          "오전 업무": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "오후 업무": "13:00~18:00",
+          "운동": "18:00~19:00",
+          "저녁": "19:00~20:00",
+          "자유 시간": "20:00~23:00",
+          "잠": "23:00~07:00"
+        },
+        "msg": ""
+      },
+      "focusStart": "start 1",
+      "after": {
+        "visual": "잠,아침,이동,오전 업무,점심,오후 업무,운동,저녁,자유 시간",
+        "expected": "잠,아침,이동,오전 업무,점심,오후 업무,운동,저녁,자유 시간",
+        "visualMatchesStartOrder": true,
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "이동": "08:00~09:00",
+          "오전 업무": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "오후 업무": "13:00~18:00",
+          "운동": "18:00~19:00",
+          "저녁": "19:00~20:00",
+          "자유 시간": "20:00~23:00",
+          "잠": "00:00~07:00"
+        },
+        "msg": ""
+      },
+      "stillFocused": "start",
+      "exceptions": [],
+      "dialogs": []
+    },
+    "R2 drag: shared handle 23:00 dragged across 00:00 with the real mouse": {
+      "before": {
+        "visual": "아침,이동,오전 업무,점심,오후 업무,운동,저녁,자유 시간,잠",
+        "expected": "아침,이동,오전 업무,점심,오후 업무,운동,저녁,자유 시간,잠",
+        "visualMatchesStartOrder": true,
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "이동": "08:00~09:00",
+          "오전 업무": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "오후 업무": "13:00~18:00",
+          "운동": "18:00~19:00",
+          "저녁": "19:00~20:00",
+          "자유 시간": "20:00~23:00",
+          "잠": "23:00~07:00"
+        },
+        "msg": ""
+      },
+      "moves": [
+        {
+          "to": 1410,
+          "visual": "아침,이동,오전 업무,점심,오후 업무,운동,저녁,자유 시간,잠",
+          "expected": "아침,이동,오전 업무,점심,오후 업무,운동,저녁,자유 시간,잠",
+          "visualMatchesStartOrder": true,
+          "timeBoxes": {
+            "아침": "07:00~08:00",
+            "이동": "08:00~09:00",
+            "오전 업무": "09:00~12:00",
+            "점심": "12:00~13:00",
+            "오후 업무": "13:00~18:00",
+            "운동": "18:00~19:00",
+            "저녁": "19:00~20:00",
+            "자유 시간": "20:00~23:30",
+            "잠": "23:30~07:00"
+          },
+          "msg": ""
+        },
+        {
+          "to": 1439,
+          "visual": "잠,아침,이동,오전 업무,점심,오후 업무,운동,저녁,자유 시간",
+          "expected": "잠,아침,이동,오전 업무,점심,오후 업무,운동,저녁,자유 시간",
+          "visualMatchesStartOrder": true,
+          "timeBoxes": {
+            "아침": "07:00~08:00",
+            "이동": "08:00~09:00",
+            "오전 업무": "09:00~12:00",
+            "점심": "12:00~13:00",
+            "오후 업무": "13:00~18:00",
+            "운동": "18:00~19:00",
+            "저녁": "19:00~20:00",
+            "자유 시간": "20:00~00:00",
+            "잠": "00:00~07:00"
+          },
+          "msg": ""
+        },
+        {
+          "to": 0,
+          "visual": "잠,아침,이동,오전 업무,점심,오후 업무,운동,저녁,자유 시간",
+          "expected": "잠,아침,이동,오전 업무,점심,오후 업무,운동,저녁,자유 시간",
+          "visualMatchesStartOrder": true,
+          "timeBoxes": {
+            "아침": "07:00~08:00",
+            "이동": "08:00~09:00",
+            "오전 업무": "09:00~12:00",
+            "점심": "12:00~13:00",
+            "오후 업무": "13:00~18:00",
+            "운동": "18:00~19:00",
+            "저녁": "19:00~20:00",
+            "자유 시간": "20:00~00:00",
+            "잠": "00:00~07:00"
+          },
+          "msg": ""
+        },
+        {
+          "to": 30,
+          "visual": "잠,아침,이동,오전 업무,점심,오후 업무,운동,저녁,자유 시간",
+          "expected": "잠,아침,이동,오전 업무,점심,오후 업무,운동,저녁,자유 시간",
+          "visualMatchesStartOrder": true,
+          "timeBoxes": {
+            "아침": "07:00~08:00",
+            "이동": "08:00~09:00",
+            "오전 업무": "09:00~12:00",
+            "점심": "12:00~13:00",
+            "오후 업무": "13:00~18:00",
+            "운동": "18:00~19:00",
+            "저녁": "19:00~20:00",
+            "자유 시간": "20:00~00:30",
+            "잠": "00:30~07:00"
+          },
+          "msg": ""
+        }
+      ],
+      "afterRelease": {
+        "visual": "잠,아침,이동,오전 업무,점심,오후 업무,운동,저녁,자유 시간",
+        "expected": "잠,아침,이동,오전 업무,점심,오후 업무,운동,저녁,자유 시간",
+        "visualMatchesStartOrder": true,
+        "timeBoxes": {
+          "아침": "07:00~08:00",
+          "이동": "08:00~09:00",
+          "오전 업무": "09:00~12:00",
+          "점심": "12:00~13:00",
+          "오후 업무": "13:00~18:00",
+          "운동": "18:00~19:00",
+          "저녁": "19:00~20:00",
+          "자유 시간": "20:00~00:30",
+          "잠": "00:30~07:00"
+        },
+        "msg": ""
+      },
+      "exceptions": [],
+      "dialogs": []
+    },
+    "R3 time box: clear the hour, click elsewhere, old time comes back": {
+      "before": "07:00",
+      "valueWhileCleared": "",
+      "after": "07:00",
+      "mem": "07:00",
+      "exceptions": [],
+      "dialogs": []
+    },
+    "U1 10 minute unit: typed minute 05 is rounded": {
+      "value": "07:10",
+      "mem": "07:10",
+      "stepAttr": "600",
+      "exceptions": [],
+      "dialogs": []
+    },
+    "U2 push neighbour with end-minute ArrowUp (10 min steps), refuse when neighbour < 10 min, circle label hidden under 40 min": {
+      "steps": [
+        {
+          "i": 1,
+          "office": "09:00~12:10",
+          "lunch": "12:10~13:00",
+          "msg": "",
+          "lunchLabelOnCircle": true
+        },
+        {
+          "i": 2,
+          "office": "09:00~12:20",
+          "lunch": "12:20~13:00",
+          "msg": "",
+          "lunchLabelOnCircle": true
+        },
+        {
+          "i": 3,
+          "office": "09:00~12:30",
+          "lunch": "12:30~13:00",
+          "msg": "",
+          "lunchLabelOnCircle": false
+        },
+        {
+          "i": 4,
+          "office": "09:00~12:40",
+          "lunch": "12:40~13:00",
+          "msg": "",
+          "lunchLabelOnCircle": false
+        },
+        {
+          "i": 5,
+          "office": "09:00~12:50",
+          "lunch": "12:50~13:00",
+          "msg": "",
+          "lunchLabelOnCircle": false
+        },
+        {
+          "i": 6,
+          "office": "09:00~12:00",
+          "lunch": "12:50~13:00",
+          "msg": "",
+          "lunchLabelOnCircle": false
+        },
+        {
+          "i": 7,
+          "office": "09:00~12:10",
+          "lunch": "12:50~13:00",
+          "msg": "",
+          "lunchLabelOnCircle": false
+        }
+      ],
+      "exceptions": [],
+      "dialogs": []
+    },
+    "U2b typing: 오전 업무 end hour ArrowUp 12:00 -> 13:00 would erase 점심, refused": {
+      "office": "09:00~12:00",
+      "lunch": "12:00~13:00",
+      "msg": "그 시간으로는 바꿀 수 없어요 (옆 일정이 10분보다 짧아지거나 시간이 너무 짧아요)",
+      "msgColor": "rgb(192, 57, 43)",
+      "exceptions": [],
+      "dialogs": []
+    },
+    "U2c drag: handle 13:00 (점심 end, 오후 업무 start) pulled back toward 12:00; 점심 can shrink to 10 min and no further": {
+      "moves": [
+        {
+          "to": 770,
+          "lunch": "12:00~12:50",
+          "afternoon": "12:50~18:00",
+          "msg": ""
+        },
+        {
+          "to": 750,
+          "lunch": "12:00~12:30",
+          "afternoon": "12:30~18:00",
+          "msg": ""
+        },
+        {
+          "to": 730,
+          "lunch": "12:00~12:10",
+          "afternoon": "12:10~18:00",
+          "msg": ""
+        },
+        {
+          "to": 725,
+          "lunch": "12:00~12:10",
+          "afternoon": "12:10~18:00",
+          "msg": "옆 일정이 더 줄어들 수 없어요"
+        },
+        {
+          "to": 720,
+          "lunch": "12:00~12:10",
+          "afternoon": "12:10~18:00",
+          "msg": "옆 일정이 더 줄어들 수 없어요"
+        }
+      ],
+      "exceptions": [],
+      "dialogs": []
+    },
+    "U3 add: fills widest gap, up to 1 hour; shorter when the gap is shorter; no free time message": {
+      "defaultTableAdd": {
+        "name": "새 일정",
+        "start": "19:00",
+        "end": "20:00",
+        "blocks": 7
+      },
+      "fullDayAdd": {
+        "msg": "빈 시간이 없어요. 다른 일정을 줄이거나 지워 주세요.",
+        "blocks": 9
+      },
+      "gapMsg": "",
+      "tenMinuteGapAdd": {
+        "name": "새 일정",
+        "start": "23:00",
+        "end": "23:10",
+        "blocks": 10
+      },
+      "exceptions": [],
+      "dialogs": []
+    },
+    "U4 single table cannot be deleted; new table is empty; copy; name limits": {
+      "msgSingleTableDelete": "시간표가 하나뿐이라 지울 수 없어요.",
+      "newT": {
+        "tables": 2,
+        "blocks": 0,
+        "name": "새 시간표"
+      },
+      "copy": {
+        "tables": 3,
+        "name": "새 시간표 복사"
+      },
+      "attrs": {
+        "tname": 20
+      },
+      "attrs2": {
+        "blockName": 12
+      },
+      "blockNameLenAfterInsert14More": 12,
+      "tableNameLenAfterInsertLong": 20,
+      "circleLabelsAre7CharsMax": [
+        "잠",
+        "아침가나다라마",
+        "이동",
+        "오전 업무",
+        "점심",
+        "오후 업무",
+        "운동",
+        "저녁",
+        "자유 시간"
+      ],
+      "exceptions": [],
+      "dialogs": []
+    },
+    "U5 select by clicking a slice with the real mouse shows details; clicking a row selects too": {
+      "bySlice": {
+        "sel": "오전 업무",
+        "center": [
+          "오전 업무",
+          "09:00~12:00"
+        ],
+        "detailsVisible": "block"
+      },
+      "exceptions": [],
+      "dialogs": []
+    },
+    "I1 import: only off-step time (5 min) table": {
+      "tables": [
+        "평일 예시",
+        "주말 예시"
+      ],
+      "dirtyAfter": false,
+      "shown": "평일 예시",
+      "exceptions": [],
+      "dialogs": [
+        {
+          "type": "alert",
+          "message": "불러오기 실패: 파일에 쓸 수 있는 시간표가 없어요(비었거나 형식이 맞지 않거나 일정이 겹침). 시각은 10분 단위여야 해서 1개를 건너뛰었어요. 지금 화면은 그대로 둘게요."
+        }
+      ]
+    },
+    "I2 import: mixed (good, off-step, overlap, bad color)": {
+      "tables": [
+        "좋음"
+      ],
+      "dirtyAfter": false,
+      "shown": "좋음",
+      "exceptions": [],
+      "dialogs": [
+        {
+          "type": "alert",
+          "message": "1개 불러왔어요 (형식이 맞지 않거나 일정이 겹쳐서 2개, 시각은 10분 단위여야 해서 1개는 건너뜀)"
+        }
+      ]
+    },
+    "I3 import: overlap only": {
+      "tables": [
+        "평일 예시",
+        "주말 예시"
+      ],
+      "dirtyAfter": false,
+      "shown": "평일 예시",
+      "exceptions": [],
+      "dialogs": [
+        {
+          "type": "alert",
+          "message": "불러오기 실패: 파일에 쓸 수 있는 시간표가 없어요(비었거나 형식이 맞지 않거나 일정이 겹침). 지금 화면은 그대로 둘게요."
+        }
+      ]
+    },
+    "I4 import: not JSON": {
+      "tables": [
+        "평일 예시",
+        "주말 예시"
+      ],
+      "dirtyAfter": false,
+      "shown": "평일 예시",
+      "exceptions": [],
+      "dialogs": [
+        {
+          "type": "alert",
+          "message": "불러오기 실패: 시간표 파일 형식이 아니에요. 지금 화면은 그대로 둘게요."
+        }
+      ]
+    },
+    "I5 import: empty file": {
+      "tables": [
+        "평일 예시",
+        "주말 예시"
+      ],
+      "dirtyAfter": false,
+      "shown": "평일 예시",
+      "exceptions": [],
+      "dialogs": [
+        {
+          "type": "alert",
+          "message": "불러오기 실패: 시간표 파일 형식이 아니에요. 지금 화면은 그대로 둘게요."
+        }
+      ]
+    },
+    "I6 import: no tables": {
+      "tables": [
+        "평일 예시",
+        "주말 예시"
+      ],
+      "dirtyAfter": false,
+      "shown": "평일 예시",
+      "exceptions": [],
+      "dialogs": [
+        {
+          "type": "alert",
+          "message": "불러오기 실패: 파일에 쓸 수 있는 시간표가 없어요(비었거나 형식이 맞지 않거나 일정이 겹침). 지금 화면은 그대로 둘게요."
+        }
+      ]
+    },
+    "I7 import while dirty asks first, not dirty does not": {
+      "cleanImportDialogs": [
+        {
+          "type": "alert",
+          "message": "1개 불러왔어요 (형식이 맞지 않거나 일정이 겹쳐서 2개, 시각은 10분 단위여야 해서 1개는 건너뜀)"
+        }
+      ],
+      "dirtyImportDialogs": [
+        {
+          "type": "confirm",
+          "message": "저장하지 않은 변경이 있어요. 불러오면 지금 시간표 목록이 파일 내용으로 바뀌고 변경은 사라져요. 계속할까요?"
+        },
+        {
+          "type": "alert",
+          "message": "1개 불러왔어요 (형식이 맞지 않거나 일정이 겹쳐서 2개, 시각은 10분 단위여야 해서 1개는 건너뜀)"
+        }
+      ],
+      "dirtyAfter": false,
+      "exceptions": [],
+      "dialogs": [
+        {
+          "type": "confirm",
+          "message": "저장하지 않은 변경이 있어요. 불러오면 지금 시간표 목록이 파일 내용으로 바뀌고 변경은 사라져요. 계속할까요?"
+        },
+        {
+          "type": "alert",
+          "message": "1개 불러왔어요 (형식이 맞지 않거나 일정이 겹쳐서 2개, 시각은 10분 단위여야 해서 1개는 건너뜀)"
+        }
+      ]
+    }
+  },
+  "chromeVersion": "Chrome/157.0.8103.79"
+}

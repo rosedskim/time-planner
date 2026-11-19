@@ -1,0 +1,1 @@
+{"app": "timetable", "version": 1, "tables": [{"name": "겹침", "blocks": [{"name": "A", "color": "#bfe6f5", "start": 0, "end": 600, "details": []}, {"name": "B", "color": "#bfe6f5", "start": 500, "end": 900, "details": []}]}]}

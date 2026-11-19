@@ -1,0 +1,25 @@
+[
+ {
+  "time": "16:30",
+  "file": "/private/tmp/claude-501/-Users-gimdonghyeon-Git-rosedskim-time-planner/197781c0-c678-4495-bbe6-53c3b1ff95d8/scratchpad/issue-18/final-1630.png",
+  "sel": "오전 업무",
+  "center": [
+   "오전 업무",
+   "09:00~12:00"
+  ],
+  "pill": "16:30",
+  "checkbox": true,
+  "table": "평일 예시",
+  "tables": [
+   "평일 예시",
+   "주말 예시"
+  ],
+  "docH": 940,
+  "docW": 1000,
+  "innerH": 940,
+  "innerW": 1000,
+  "dpr": 2,
+  "msg": "",
+  "exceptions": []
+ }
+]

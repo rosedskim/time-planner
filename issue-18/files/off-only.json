@@ -1,0 +1,1 @@
+{"app": "timetable", "version": 1, "tables": [{"name": "오프", "blocks": [{"name": "잠", "color": "#bfe6f5", "start": 0, "end": 545, "details": []}, {"name": "낮", "color": "#bfe6f5", "start": 545, "end": 1200, "details": []}, {"name": "밤", "color": "#bfe6f5", "start": 1200, "end": 0, "details": []}]}]}
