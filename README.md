@@ -8,8 +8,8 @@
 
 ## 앱 목록
 
-| 앱 | 설명 |
-| --- | --- |
-| [circle-planner](circle-planner/) | 하루 24시간을 원 위에 나눠 그리는 개인 시간표 |
+| 앱 | 설명 | 열기 |
+| --- | --- | --- |
+| [circle-planner](circle-planner/) | 하루 24시간을 원 위에 나눠 그리는 개인 시간표 | <https://rosedskim.github.io/time-planner/circle-planner/> |
 
 [![circle-planner](circle-planner/screenshot.png)](circle-planner/)
