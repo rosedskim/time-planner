@@ -3,11 +3,11 @@
 [time-planner](../README.md)의 원형 시간표 앱입니다. 어릴 때 그리던 방학 시간표처럼, **하루 24시간을 원 위에 나눠 그리는** 간단한 웹 앱입니다.
 설치도 서버도 필요 없이 `index.html` 하나로 동작합니다.
 
-![개인 시간표 화면](screenshot.png)
-
 ## 웹에서 바로 쓰기
 
 <https://rosedskim.github.io/time-planner/circle-planner/> 을 열면 설치 없이 바로 쓸 수 있어요. 웹에서 써도 데이터는 내 PC의 파일(JSON)로 저장하고 불러와요. 앱은 데이터를 어디로도 보내지 않고, 브라우저 저장소도 쓰지 않아요.
+
+![개인 시간표 화면](screenshot.png)
 
 ## 주요 기능
 
